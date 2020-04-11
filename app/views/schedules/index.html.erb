@@ -1,0 +1,27 @@
+<div class="container-fluid p-0">
+  <% @schedules.each do |schedule| %>
+    <div class="card text-center">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Info</a>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Show', schedule, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Config</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= schedule.title %></h5>
+        <p class="card-text"><%= schedule.description %></p>
+        <%= link_to 'Show', schedule, class: "btn btn-primary" %>
+      </div>
+      <div class="card-footer text-muted">
+        <%= time_ago_in_words(schedule.last_occupation_updated_at) %>
+      </div>
+    </div>
+  <% end %>
+</div>
