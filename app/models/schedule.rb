@@ -11,7 +11,7 @@ class Schedule < ApplicationRecord
 
   def last_occupation_updated_at
     occupation = occupations.order(updated_at: :desc).first
-    occupation.updated_at || updated_at
+    occupation&.updated_at || updated_at
   end
 
   def occupations_between(start_date, end_date)
