@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_11_083358) do
+ActiveRecord::Schema.define(version: 2020_04_11_094437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "occupations", force: :cascade do |t|
+    t.string "title"
+    t.bigint "schedule_id", null: false
+    t.date "start_date"
+    t.time "start_time"
+    t.date "end_date"
+    t.time "end_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["schedule_id"], name: "index_occupations_on_schedule_id"
+  end
 
   create_table "schedules", force: :cascade do |t|
     t.string "title"
@@ -22,4 +34,5 @@ ActiveRecord::Schema.define(version: 2020_04_11_083358) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "occupations", "schedules"
 end

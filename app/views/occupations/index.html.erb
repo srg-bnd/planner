@@ -1,0 +1,18 @@
+<h1><%= @schedule.title %></h1>
+
+<div>
+<% @occupations.each do |occupation| %>
+  <div>
+    <h2><%= occupation.title %></h2>
+    <p>
+      <time><%= occupation.start_date&.to_s(:date) %></time> —
+      <time><%= occupation.end_date&.to_s(:date) %></time>
+    </p>
+    <p>
+      <time><%= occupation.start_time&.to_s(:time) %></time> —
+      <time><%= occupation.end_time&.to_s(:time) %></time>
+    </p>
+    <p><%= link_to 'Destroy', occupation, method: :delete %></p>
+  <div>
+<% end %>
+</div>
