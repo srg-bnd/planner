@@ -4,16 +4,18 @@
   <ul class="list-group">
   <% @occupations.each do |occupation| %>
     <li class="list-group-item d-flex justify-content-between align-items-center">
-      <%= occupation.title %>
-      <span class="badge badge-success">
-        <%= occupation.start_time&.to_s(:time) %> —
-        <%= occupation.end_time&.to_s(:time) %>
-      </span>
+      <p>
+        <%= occupation.title %>
+        <span class="badge badge-success">
+          <%= occupation.start_time&.to_s(:time) %> —
+          <%= occupation.end_time&.to_s(:time) %>
+        </span>
 
-      <span class="badge badge-info">
-        <%= occupation.start_date&.to_s(:date) %> —
-        <%= occupation.end_date&.to_s(:date) %>
-      </span>
+        <span class="badge badge-info">
+          <%= occupation.start_date&.to_s(:date) %> —
+          <%= occupation.end_date&.to_s(:date) %>
+        </span>
+      </p>
 
       <%= link_to occupation, method: :delete do %>
         <span class="badge badge-danger badge-pill">X</span>

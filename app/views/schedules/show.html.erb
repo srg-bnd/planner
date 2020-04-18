@@ -15,14 +15,15 @@
     <% colors = ['#50c7c7', '#50c75f', '#c76b50', '#6550c7', '#c75052', '#ebdd60', '#eb60bc']; colors_select = 0 %>
     <% @schedule.occupations_this_week.each do |occupation| %>
       <% if !@prev_occupation || occupation.start_date != @prev_occupation.start_date %>
-        <%= occupation.start_date.to_s(:date) %>
-        <span class="badge badge-primary" style='background: <%= colors[colors_select] %>'><strong><%= occupation.start_week %></strong></span>
+        <span class="badge badge-primary" style='background: <%= colors[colors_select] %>'><strong><%= occupation.start_week %></strong>
+          | <%= occupation.start_date.to_s(:date) %>
+        </span>
         <% @prev_occupation = occupation; colors_select+=1  %>
       <% end %>
 
       <div class="row border rounded-sm shadow-sm mb-1">
         <div class="col-sm-1">
-          lesson
+          <span class="badge badge-secondary">lesson</span>
           <span class="badge badge-info">  
             <time><%= occupation.start_time.to_s(:time) %></time> -
             <time><%= occupation.end_time.to_s(:time) %></time>
@@ -34,9 +35,11 @@
         </div>
 
         <div class="col-sm-1">
+        <span class="badge">
           <svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 002 6c0 4.314 6 10 6 10zm0-7a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
           </svg> home
+        </span>
         </div>
       </div>
     <% end %>
