@@ -1,18 +1,24 @@
-<h1><%= @schedule.title %></h1>
+<div class="jumbotron p-3 jumbotron-fluid">
+  <h1 class="display-5"><%= @schedule.title %></h1>
+  <hr class="my-4">
+  <ul class="list-group">
+  <% @occupations.each do |occupation| %>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <%= occupation.title %>
+      <span class="badge badge-success">
+        <%= occupation.start_time&.to_s(:time) %> —
+        <%= occupation.end_time&.to_s(:time) %>
+      </span>
 
-<div>
-<% @occupations.each do |occupation| %>
-  <div>
-    <h2><%= occupation.title %></h2>
-    <p>
-      <time><%= occupation.start_date&.to_s(:date) %></time> —
-      <time><%= occupation.end_date&.to_s(:date) %></time>
-    </p>
-    <p>
-      <time><%= occupation.start_time&.to_s(:time) %></time> —
-      <time><%= occupation.end_time&.to_s(:time) %></time>
-    </p>
-    <p><%= link_to 'Destroy', occupation, method: :delete %></p>
-  <div>
-<% end %>
+      <span class="badge badge-info">
+        <%= occupation.start_date&.to_s(:date) %> —
+        <%= occupation.end_date&.to_s(:date) %>
+      </span>
+
+      <%= link_to occupation, method: :delete do %>
+        <span class="badge badge-danger badge-pill">X</span>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
 </div>

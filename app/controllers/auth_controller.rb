@@ -1,10 +1,9 @@
 class AuthController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     session[:secret_token] = auth_params[:secret_token]
-    redirect_to root_path
+    redirect_to need_url!
   end
 
   protected

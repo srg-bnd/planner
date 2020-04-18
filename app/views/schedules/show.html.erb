@@ -6,7 +6,9 @@
   </p>
   <hr class="my-4">
     <%= link_to 'New occupation', new_occupation_path(schedule_id: @schedule.id), type: "button", class: "btn btn-outline-success" %>
-    <%= link_to 'Manage occupations', occupations_path(schedule_id: @schedule.id), type: "button", class: "btn btn-outline-secondary" %>
+    <%= link_to occupations_path(schedule_id: @schedule.id), type: "button", class: "btn btn-outline-secondary" do %>
+     Manage occupations <span class="badge badge-light"><%= @schedule.occupations.count %></span>
+    <% end %>
   <hr class="my-4">
 
   <div class="container-fluid">

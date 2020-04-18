@@ -13,12 +13,9 @@ class OccupationsController < ApplicationController
 
   def create
     occupation = Occupation.new(create_params)
-
-    if occupation.save
-      redirect_to occupation.schedule
-    else
-      render :new
-    end
+    return render :new unless occupation.save
+    
+    redirect_to occupation.schedule
   end
 
   def destroy
@@ -31,14 +28,6 @@ class OccupationsController < ApplicationController
   end
 
   private
-
-  def have_access?
-    if session[:secret_token] == ENV['CONTROLLER_SECRET_TOKEN']
-      yield
-    else
-      raise ActionController::RoutingError.new('Forbidden')
-    end
-  end
 
   def find_occupation
     @occupation = Occupation.find(params[:id])

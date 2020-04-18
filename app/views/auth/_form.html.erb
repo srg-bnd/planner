@@ -1,8 +1,9 @@
 <%= form_for :auth, url: auth_index_path, method: :post do |f| %>
-  <div>
+
+  <div class='form-group'>
     <%= f.label 'Secret token', for: :secret_token  %>
-    <%= f.text_field :secret_token %>
+    <%= f.password_field :secret_token, class: 'form-control' %>
   </div>
 
-  <%= f.submit %>
+  <%= f.submit 'Auth', type: 'submit', class: 'btn btn-primary' %>
 <% end %>
