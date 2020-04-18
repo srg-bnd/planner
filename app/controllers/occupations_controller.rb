@@ -12,10 +12,10 @@ class OccupationsController < ApplicationController
   end
 
   def create
-    occupation = Occupation.new(create_params)
-    return render :new unless occupation.save
+    @occupation = Occupation.new(create_params)
+    return render :new unless @occupation.save
     
-    redirect_to occupation.schedule
+    redirect_to @occupation.schedule
   end
 
   def destroy
