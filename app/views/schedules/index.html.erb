@@ -4,22 +4,30 @@
       <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Info</a>
+            <a class="nav-link active" href="#">
+              <%= t('schedules.index.title.info') %>
+            </a>
           </li>
           <li class="nav-item">
-            <%= link_to 'Auth', new_auth_path, class: "nav-link" %>
+            <%= link_to t('schedules.index.title.auth'), new_auth_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Config</a>
+            <a class="nav-link disabled" href="#">
+              <%= t('schedules.index.title.config') %>
+            </a>
           </li>
         </ul>
       </div>
       <div class="card-body">
         <h5 class="card-title"><%= schedule.title %></h5>
         <p class="card-text"><%= schedule.description %></p>
-        <%= link_to 'Show', schedule, class: "btn btn-primary" %>
+        <%= link_to t('schedules.index.link.show'), schedule, class: "btn btn-primary" %>
       </div>
       <div class="card-footer text-muted">
+      <svg class="bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M3.17 6.706a5 5 0 017.103-3.16.5.5 0 10.454-.892A6 6 0 1013.455 5.5a.5.5 0 00-.91.417 5 5 0 11-9.375.789z" clip-rule="evenodd"/>
+        <path fill-rule="evenodd" d="M8.147.146a.5.5 0 01.707 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 11-.707-.708L10.293 3 8.147.854a.5.5 0 010-.708z" clip-rule="evenodd"/>
+      </svg>
         <%= time_ago_in_words(schedule.last_occupation_updated_at) %>
       </div>
     </div>

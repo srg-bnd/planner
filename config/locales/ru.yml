@@ -1,0 +1,56 @@
+ru:
+  datetime:
+    distance_in_words:
+      less_than_x_minutes:
+        one: меньше минуты
+        other: "меньше %{count} мин."
+      x_minutes:
+        one: "минута"
+        other: "%{count} мин."
+      about_x_hours:
+        one: "около часа"
+        other: "около %{count} ч."
+  language:
+    title: Язык
+    en: Английский
+    ru: Русский
+  schedules:
+    index:
+      title:
+        info: Информация
+        auth: Аутентификация
+        config: Настройки
+      link:
+        show: Просмотр
+    show:
+      link:
+        occupations:
+          new: Новое занятие
+          manage: Управление занятиями
+  occupations:
+    new:
+      title: Новое занятие
+      form:
+        title:
+          title: Занятие
+          placeholder: Математика
+        start_date:
+          title: Неделя начала
+          text_muted: Включая сам день недели
+        end_date:
+          title: Неделя окончания
+          text_muted: Опциально
+        start_time:
+          title: Время начала
+        end_time:
+          title: Время окончания
+        submit:
+          title: Создать
+  auth:
+    new:
+      title: Аутентификация
+      form:
+        secret_token:
+          title: Секретный токен
+        submit:
+          title: Аутентифицироваться

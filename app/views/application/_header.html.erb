@@ -3,4 +3,15 @@
     <%= image_tag 'ruby.png', width: "35", height: "30", class: "d-inline-block align-top",  alt: "Planning Now" %>
     <%= 'E-School' %>
   </a>
+
+  <div class="dropdown show">
+    <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= t('language.title') %>
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <%= link_to t('language.en'), root_path(locale: :en), class: "dropdown-item"%>
+      <%= link_to t('language.ru'), root_path(locale: :ru), class: "dropdown-item"%>
+    </div>
+  </div>
 </nav>
