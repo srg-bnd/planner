@@ -1,10 +1,20 @@
 class ApplicationController < ActionController::Base
+  add_flash_types :primary, :secondary, :success, :danger,
+                  :warning, :info, :light, :dark
   around_action :switch_locale
 
   private
 
+  def pagination(objects)
+    return objects unless params[:page].present?
+
+    page = Paginator.page(objects, params)
+    @pagination_info = page.info
+    # return objects with pagination
+    page.list
+  end
+
   def switch_locale(&action)
-    puts request.base_url, request.original_fullpath, "#####3", request.env['PATH_INFO']
     locale = params[:locale] || I18n.default_locale
     I18n.with_locale(locale, &action)
   end

@@ -1,39 +1,58 @@
 class OccupationsController < ApplicationController
   around_action :have_access?
-  before_action :find_occupation, only: [:destroy]
+  before_action :find_schedule
+  before_action :find_occupation, only: [:edit, :update, :destroy]
 
   def index
-    @schedule = Schedule.find(params[:schedule_id])
     @occupations = @schedule.occupations
   end
 
   def new
-    @occupation = Occupation.new(schedule_id: params[:schedule_id])
+    @occupation = @schedule.occupations.new
   end
 
   def create
-    @occupation = Occupation.new(create_params)
-    return render :new unless @occupation.save
-    
-    redirect_to @occupation.schedule
+    @occupation = @schedule.occupations.new(create_params)
+    unless @occupation.save
+      flash[:danger] = t('.flash.danger')
+      return render :new
+    end
+
+    redirect_to @schedule, success: t('.flash.success')
+  end
+
+  def edit; end
+
+  def update
+    @occupation.assign_attributes(update_params)
+    unless @occupation.save
+      flash[:danger] = t('.flash.danger')
+      return render :edit
+    end
+
+    redirect_to schedule_occupations_path(@schedule),
+                success: t('.flash.success')
   end
 
   def destroy
-    schedule = @occupation.schedule
-    if @occupation.destroy
-      redirect_to occupations_path(schedule_id: schedule.id)
-    else
-      raise ActionController::RoutingError.new('Bad Request')
+    unless @occupation.destroy
+      flash[:danger] = t('.flash.danger')
     end
+
+    redirect_to schedule_occupations_path(@schedule)
   end
 
   private
+
+  def find_schedule
+    @schedule = Schedule.find(params[:schedule_id])
+  end
 
   def find_occupation
     @occupation = Occupation.find(params[:id])
   end
 
-  def create_params
+  def occupation_params
     params.require(:occupation).permit(
       :title,
       :schedule_id,
@@ -42,5 +61,13 @@ class OccupationsController < ApplicationController
       :end_date,
       :end_time
     )
+  end
+
+  def create_params
+    occupation_params
+  end
+
+  def update_params
+    occupation_params
   end
 end

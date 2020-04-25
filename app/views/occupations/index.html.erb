@@ -1,29 +1,53 @@
 <div class="jumbotron p-3 jumbotron-fluid">
   <h1 class="display-5"><%= @schedule.title %></h1>
   <hr class="my-4">
+
+    <%= link_to t('occupations.show.link.schedules.show'), schedule_path(@schedule), type: "button", class: "btn btn-outline-secondary" %>
+    <%= link_to t('schedules.show.link.occupations.new'), new_schedule_occupation_path(@schedule), type: "button", class: "btn btn-outline-success" %>
+
+  <hr class="my-4">
+
   <ul class="list-group">
   <% @occupations.each do |occupation| %>
+
     <li class="list-group-item d-flex justify-content-between align-items-center">
-      <p>
-        <%= occupation.title %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
         <span class="badge badge-success">
           <%= occupation.start_time&.to_s(:time) %> —
           <%= occupation.end_time&.to_s(:time) %>
         </span>
-
         <span class="badge badge-info">
           <%= occupation.start_date&.to_s(:date) %> —
           <%= occupation.end_date&.to_s(:date) %>
         </span>
-      </p>
+    </div>
 
-      <%= link_to occupation, method: :delete do %>
+    <div class="col-sm">
+        <%= occupation.title %>
+    </div>
+
+    <div class="col-sm-1">
+      <%= link_to edit_schedule_occupation_path(@schedule, occupation) do %>
         <span>
-        <svg class="bi bi-x-circle-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="#eb2f2f" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-4.146-3.146a.5.5 0 00-.708-.708L8 7.293 4.854 4.146a.5.5 0 10-.708.708L7.293 8l-3.147 3.146a.5.5 0 00.708.708L8 8.707l3.146 3.147a.5.5 0 00.708-.708L8.707 8l3.147-3.146z" clip-rule="evenodd"/>
-        </svg>
+          <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/>
+            <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 00.5.5H4v.5a.5.5 0 00.5.5H5v.5a.5.5 0 00.5.5H6v-1.5a.5.5 0 00-.5-.5H5v-.5a.5.5 0 00-.5-.5H3z" clip-rule="evenodd"/>
+          </svg>
         </span>
       <% end %>
+
+      <%= link_to [@schedule, occupation], method: :delete, data: {confirm: t('.you_sure')} do %>
+        <span>
+          <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="#eb2f2f" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>
+          </svg>
+        </span>
+      <% end %>
+        </div>
+      </div>
+    </div>   
     </li>
   <% end %>
   </ul>

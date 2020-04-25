@@ -1,4 +1,7 @@
 en:
+  paginator:
+    next: Next
+    previous: Previous
   language:
     title: Language
     en: English
@@ -17,6 +20,12 @@ en:
           new: New occupation
           manage: Manage occupations
   occupations:
+    index:
+      you_sure: Are you sure?
+    show:
+      link:
+        schedules:
+          show: Schedule
     new:
       title: New occupation
       form:
@@ -35,6 +44,22 @@ en:
           title: End time
         submit:
           title: Create
+    edit:
+      title: Edit occupation
+      form:
+        submit:
+          title: Update
+    create:
+      flash:
+        success: Occupation created 
+        danger: Error when creating an occupation
+    update:
+      flash:
+        success: Occupation updated
+        danger: Error occurred while updating occupation
+    destroy:
+      flash:
+        danger: Error deleting an occupation
   auth:
     new:
       title: Authentication

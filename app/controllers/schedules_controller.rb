@@ -5,8 +5,7 @@ class SchedulesController < ApplicationController
     @schedules = Schedule.all
   end
 
-  def show
-  end
+  def show; end
 
   private
 

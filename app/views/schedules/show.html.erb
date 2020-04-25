@@ -5,25 +5,27 @@
     </span>
   </p>
   <hr class="my-4">
-    <%= link_to t('schedules.show.link.occupations.new'), new_occupation_path(schedule_id: @schedule.id), type: "button", class: "btn btn-outline-success" %>
-    <%= link_to occupations_path(schedule_id: @schedule.id), type: "button", class: "btn btn-outline-secondary" do %>
+
+    <%= link_to t('schedules.show.link.occupations.new'), new_schedule_occupation_path(@schedule), type: "button", class: "btn btn-outline-success" %>
+    <%= link_to schedule_occupations_path(@schedule), type: "button", class: "btn btn-outline-secondary" do %>
      <%= t('schedules.show.link.occupations.manage') %> <span class="badge badge-light">
      <%= @schedule.occupations.count %>
      </span>
     <% end %>
+
   <hr class="my-4">
 
   <div class="container-fluid">
-    <% colors = ['#50c7c7', '#50c75f', '#c76b50', '#6550c7', '#c75052', '#ebdd60', '#eb60bc']; colors_select = 0 %>
     <% @schedule.occupations_this_week.each do |occupation| %>
-      <% if !@prev_occupation || occupation.start_date != @prev_occupation.start_date %>
-        <span class="badge badge-primary" style='background: <%= colors[colors_select] %>'><strong><%= occupation.start_week %></strong>
-          | <%= occupation.start_date.to_s(:date) %>
+      <% if @week.nil? || @week != occupation.week %>
+        <span class="h1 badge badge-primary" style='background: <%= occupation.color %>'>
+          <strong><%= occupation.start_week %></strong> |
+          <%= occupation.current_week_day.to_s(:date) %>
         </span>
-        <% @prev_occupation = occupation; colors_select+=1  %>
+        <% @week = occupation.week  %>
       <% end %>
 
-      <div class="row border rounded-sm shadow-sm mb-1">
+      <div class="row border rounded-sm shadow-sm mb-1 align-items-center">
         <div class="col-sm-1">
           <span class="badge badge-secondary">lesson</span>
           <span class="badge badge-info">  
@@ -32,7 +34,7 @@
           </span>
         </div>
 
-        <div class="col-sm-10">
+        <div class="col-sm">
           <p><%= occupation.title %></p>
         </div>
 
@@ -46,5 +48,4 @@
       </div>
     <% end %>
   </div>
-
 </div>

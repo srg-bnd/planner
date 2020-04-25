@@ -1,45 +1,38 @@
-<%= form_for @occupation do |f| %>
 
-  <div class='form-group'>
-    <%= f.label t('occupations.new.form.title.title'), for: :title  %>
-    <%= f.text_field :title,
-                     class: 'form-control',
-                     placeholder: t('occupations.new.form.title.placeholder')
-    %>
+<div class='form-group'>
+  <%= f.label t('occupations.new.form.title.title'), for: :title  %>
+  <%= f.text_field :title,
+                   class: 'form-control',
+                   placeholder: t('occupations.new.form.title.placeholder')
+  %>
+</div>
+
+<div class="form-row">
+  <div class='form-group col-md-6'>
+    <%= f.label t('occupations.new.form.start_date.title'), for: :start_date  %>
+    <%= f.date_field :start_date, type: :date, class: 'form-control' %>
+    <small id="start_date" class="form-text text-muted">
+      <%= t('occupations.new.form.start_date.text_muted') %>
+    </small>
   </div>
 
-  <div class="form-row">
-    <div class='form-group col-md-6'>
-      <%= f.label t('occupations.new.form.start_date.title'), for: :start_date  %>
-      <%= f.date_field :start_date, type: :date, class: 'form-control' %>
-      <small id="start_date" class="form-text text-muted">
-        <%= t('occupations.new.form.start_date.text_muted') %>
-      </small>
-    </div>
+  <div class='form-group col-md-6'>
+    <%= f.label t('occupations.new.form.end_date.title'), for: :end_date  %>
+    <%= f.date_field :end_date, type: :date, class: 'form-control' %>
+    <small id='end_date' class="form-text text-muted">
+      <%= t('occupations.new.form.end_date.text_muted') %>
+    </small>
+  </div>
+</div>
 
-    <div class='form-group col-md-6'>
-      <%= f.label t('occupations.new.form.end_date.title'), for: :end_date  %>
-      <%= f.date_field :end_date, type: :date, class: 'form-control' %>
-      <small id='end_date' class="form-text text-muted">
-        <%= t('occupations.new.form.end_date.text_muted') %>
-      </small>
-    </div>
+<div class="form-row">
+  <div class='form-group col-md-6'>
+    <%= f.label t('occupations.new.form.start_time.title'), for: :start_time  %>
+    <%= f.time_field :start_time, type: :time, class: 'form-control' %>
   </div>
 
-  <div class="form-row">
-    <div class='form-group col-md-6'>
-      <%= f.label t('occupations.new.form.start_time.title'), for: :start_time  %>
-      <%= f.time_field :start_time, type: :time, class: 'form-control' %>
-    </div>
-
-    <div class='form-group col-md-6'>
-      <%= f.label t('occupations.new.form.end_time.title'), for: :end_time  %>
-      <%= f.time_field :end_time, type: :time, class: 'form-control' %>
-    </div>
+  <div class='form-group col-md-6'>
+    <%= f.label t('occupations.new.form.end_time.title'), for: :end_time  %>
+    <%= f.time_field :end_time, type: :time, class: 'form-control' %>
   </div>
-
-  <%= f.hidden_field :schedule_id, value: @occupation.schedule_id %>
-  <%= f.hidden_field :secret_token, value: params[:secret_token] %>
-
-  <%= f.submit t('occupations.new.form.submit.title'), type: 'submit', class: 'btn btn-primary' %>
-<% end %>
+</div>
