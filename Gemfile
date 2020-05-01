@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'dotenv-rails', '~> 2.7'
 # Telegram Bot API
 gem 'telegram-bot'
+# Json rendering
+gem 'rabl', '0.14.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

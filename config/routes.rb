@@ -10,5 +10,13 @@ Rails.application.routes.draw do
         :index, :show, :new, :create, :edit, :update, :destroy
       ]
     end
+
+    defaults format: :json do
+      namespace :api do
+        namespace :v1 do
+          resources :schedules, only: [:index, :show]
+        end
+      end
+    end
   end
 end
