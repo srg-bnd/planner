@@ -37,11 +37,11 @@ ru:
           title: Занятие
           placeholder: Математика
         start_date:
-          title: Неделя начала
-          text_muted: Включая сам день недели
+          title: Дата и день недели начала
+          text_muted: С этой даты начинается занятие
         end_date:
-          title: Неделя окончания
-          text_muted: Опциально
+          title: Дата и день недели окончания (не обязательное)
+          text_muted: На этой дате оканчивается занятие
         start_time:
           title: Время начала
         end_time:

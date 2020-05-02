@@ -17,9 +17,12 @@ class Schedule < ApplicationRecord
   def occupations_between(start_date, end_date)
     occupations.where(
       "
-        (start_date >= :start_date) AND
-        (end_date IS NULL AND start_date <= :end_date) OR
-        (end_date IS NOT NULL AND end_date >= :start_date)
+        (start_date >= :start_date AND start_date <= :end_date) OR
+        (
+          end_date IS NOT NULL AND
+          start_date < :start_date AND
+          end_date >= :start_date
+        )
       ",
       start_date: start_date,
       end_date: end_date
@@ -27,6 +30,7 @@ class Schedule < ApplicationRecord
   end
 
   def occupations_this_week
+    puts end_week
     occupations_between(start_week, end_week).order(
       week: :asc,
       start_time: :asc

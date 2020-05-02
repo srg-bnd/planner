@@ -33,11 +33,11 @@ en:
           title: Occupation
           placeholder: Math
         start_date:
-          title: Start week
-          text_muted: Including the day of the week itself
+          title: Start date and day of the week
+          text_muted: From this date the occupation starts
         end_date:
-          title: End week
-          text_muted: Optional
+          title: End date and day of the week (not mandatory)
+          text_muted: From this date the occupation ends
         start_time:
           title: Start time
         end_time:
