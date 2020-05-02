@@ -1,10 +1,10 @@
-<div class="jumbotron p-3 jumbotron-fluid">
+<div class="jumbotron p-3 jumbotron-fluid bg-light">
   <h1 class="display-5"><%= t('occupations.edit.title')%></h1>
   <hr class="my-4">
 
   <%= link_to t('occupations.show.link.schedules.show'), schedule_path(@schedule), type: "button", class: "btn btn-outline-secondary" %>  
   <%= link_to schedule_occupations_path(@schedule), type: "button", class: "btn btn-outline-secondary" do %>
-     <%= t('schedules.show.link.occupations.manage') %> <span class="badge badge-light">
+     <%= t('schedules.show.link.occupations.manage') %> <span class="badge badge-light border">
      <%= @schedule.occupations.count %>
      </span>
   <% end %>
@@ -12,6 +12,6 @@
   <hr class="my-4">
   <%= form_for [@schedule, @occupation], method: :put  do |f| %>
     <%= render 'form', f: f %>
-    <%= f.submit t('occupations.edit.form.submit.title'), type: 'submit', class: 'btn btn-primary' %>
+    <%= f.submit t('occupations.edit.form.submit.title'), type: 'submit', class: 'btn btn-outline-primary' %>
   <% end %>
 </div>

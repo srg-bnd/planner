@@ -10,7 +10,7 @@ class Schedule extends React.Component {
         <div className="card-body text-center">
           <h5 className="card-title">{data.title}</h5>
           <p className="card-text">{data.description}</p>
-          <a className="btn btn-primary" href={data.link.href}>
+          <a className="btn btn-outline-primary" href={data.link.href}>
             {data.link.title}
           </a>
         </div>
@@ -93,7 +93,11 @@ class Schedules extends React.Component {
 
   render() {
     const { data, isLoaded, error } = this.state
-    if (!isLoaded) return <div>...Loading</div>
+    if (!isLoaded) return(
+      <div className="spinner-border text-primary" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    )
     if (error) return <div>{`Catch error: ${error.message}`}</div>
     if (!data.success) return <div>>{'Server error: ${data.error}'}</div>
 

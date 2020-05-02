@@ -1,51 +1,61 @@
-<div class="jumbotron p-3 jumbotron-fluid">
+<div class="jumbotron p-3 jumbotron-fluid bg-light">
   <h1 class="display-5"><%= @schedule.title %></h1>
   <p class="lead">
-    <span class="badge badge-dark"><%= @schedule.start_week %> — <%= @schedule.end_week %>
+    <span class="badge badge-dark">
+    <%= render 'icons/calendar' %>
+    <%= @schedule.start_week %> — <%= @schedule.end_week %>
     </span>
   </p>
   <hr class="my-4">
 
     <%= link_to t('schedules.show.link.occupations.new'), new_schedule_occupation_path(@schedule), type: "button", class: "btn btn-outline-success" %>
     <%= link_to schedule_occupations_path(@schedule), type: "button", class: "btn btn-outline-secondary" do %>
-     <%= t('schedules.show.link.occupations.manage') %> <span class="badge badge-light">
+     <%= t('schedules.show.link.occupations.manage') %>
+     <span class="badge badge-light border">
      <%= @schedule.occupations.count %>
      </span>
     <% end %>
 
   <hr class="my-4">
 
-  <div class="container-fluid">
+  <div class="list-group">
     <% @schedule.occupations_this_week.each do |occupation| %>
+        
       <% if @week.nil? || @week != occupation.week %>
-        <span class="h1 badge badge-primary" style='background: <%= occupation.color %>'>
-          <strong><%= occupation.start_week %></strong> |
-          <%= occupation.current_week_day.to_s(:date) %>
-        </span>
+      
+        <div class="list-group-item text-light pb-0 pl-0 border-0 bg-light">
+          <div class="d-flex w-100 justify-content-between">
+            <h6 class='rounded p-1 mb-0' style='background: <%= occupation.color %>'>
+              <small><strong><%= occupation.start_week %></strong> |
+              <%= occupation.current_week_day.to_s(:date) %>
+            </small></h6>
+          </div>
+        </div>
+
         <% @week = occupation.week  %>
       <% end %>
 
-      <div class="row border rounded-sm shadow-sm mb-1 align-items-center">
-        <div class="col-sm-1">
-          <span class="badge badge-secondary">lesson</span>
-          <span class="badge badge-info">  
+      <div class="list-group-item rounded border bg-light">
+        <div class="d-flex w-100 justify-content-between">
+          <h6 class="mb-1"><strong><%= occupation.title %></strong></h6>
+          <span>
+            <span class="badge btn btn-outline-secondary">
+              <%= render 'icons/list_ul' %> lesson
+            </span>
+            <span class="badge btn btn-outline-secondary">
+              <%= render 'icons/geo_alt' %> home
+            </span>
+          </span>
+        </div>
+        <span>
+          <span class="badge btn btn-outline-secondary">
+            <%= render 'icons/stopwatch' %>
             <time><%= occupation.start_time.to_s(:time) %></time> -
             <time><%= occupation.end_time.to_s(:time) %></time>
           </span>
-        </div>
-
-        <div class="col-sm">
-          <p><%= occupation.title %></p>
-        </div>
-
-        <div class="col-sm-1">
-        <span class="badge">
-          <svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 002 6c0 4.314 6 10 6 10zm0-7a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
-          </svg> home
         </span>
-        </div>
       </div>
+
     <% end %>
   </div>
 </div>
