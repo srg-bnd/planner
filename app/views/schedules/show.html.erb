@@ -39,12 +39,18 @@
         <div class="d-flex w-100 justify-content-between">
           <h6 class="mb-1"><strong><%= occupation.title %></strong></h6>
           <span>
+
+            <% if occupation.kind.present? %>
             <span class="badge btn btn-outline-secondary">
-              <%= render 'icons/list_ul' %> lesson
+              <%= render 'icons/list_ul' %> <%= occupation.kind.downcase %>
             </span>
+            <% end %>
+
+            <% if occupation.place.present? %>
             <span class="badge btn btn-outline-secondary">
-              <%= render 'icons/geo_alt' %> home
+              <%= render 'icons/geo_alt' %> <%= occupation.place.downcase %>
             </span>
+            <% end %>
           </span>
         </div>
         <span>

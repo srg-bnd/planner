@@ -46,6 +46,12 @@ ru:
           title: Время начала
         end_time:
           title: Время окончания
+        kind:
+          title: Тип занятия
+          value: Урок
+        place:
+          title: Место
+          value: Дом
         submit:
           title: Создать
     edit:

@@ -42,6 +42,12 @@ en:
           title: Start time
         end_time:
           title: End time
+        kind:
+          title: Type
+          value: Lesson
+        place:
+          title: Place
+          value: Home 
         submit:
           title: Create
     edit:
