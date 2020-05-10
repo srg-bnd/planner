@@ -8,6 +8,7 @@ class OccupationsController < ApplicationController
   end
 
   def new
+    @places = @schedule.places
     @occupation = @schedule.occupations.new
   end
 
@@ -21,7 +22,25 @@ class OccupationsController < ApplicationController
     redirect_to @schedule, success: t('.flash.success')
   end
 
-  def edit; end
+  def edit
+    @places = []
+    @field_of_activities = []
+
+    if @occupation.place.present?
+      @places << Place.new(
+        title: t('occupations.new.form.place.prompt')
+      )
+    end
+
+    if @occupation.field_of_activity.present?
+      @field_of_activities << FieldOfActivity.new(
+        title: t('occupations.new.form.field_of_activity.prompt')
+      )
+    end
+
+    @places += @schedule.places
+    @field_of_activities += @schedule.field_of_activities
+  end
 
   def update
     @occupation.assign_attributes(update_params)

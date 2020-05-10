@@ -52,7 +52,8 @@
     <%= f.label t('occupations.new.form.field_of_activity.title'),
         for: :field_of_activity_id  %>
     <%= f.collection_select :field_of_activity_id,
-                @schedule.field_of_activities, :id, :title,
+                (@field_of_activities || @schedule.field_of_activities),
+                :id, :title,
                 { prompt: t('occupations.new.form.field_of_activity.prompt') },
                 class: 'custom-select' %>
   </div>
@@ -60,7 +61,8 @@
 
   <div class='form-group col-md-6'>
     <%= f.label t('occupations.new.form.place.title'), for: :place_id  %>
-    <%= f.collection_select :place_id, @schedule.places, :id, :title,
+    <%= f.collection_select :place_id, (@places || @schedule.places),
+                            :id, :title,
                             { prompt: t('occupations.new.form.place.prompt') },
                             class: 'custom-select' %>
   </div>
