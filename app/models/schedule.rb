@@ -1,5 +1,16 @@
 class Schedule < ApplicationRecord
   has_many :occupations
+  has_many :places
+  has_many :field_of_activities
+
+  def self.type_of_week
+    number = Time.now.strftime('%U').to_i + 1
+    number.odd? ? :odd : :even
+  end
+
+  def self.types_week
+    [:simple, Schedule.type_of_week]
+  end
 
   def start_week
     Date.today.monday
@@ -14,8 +25,8 @@ class Schedule < ApplicationRecord
     occupation&.updated_at || updated_at
   end
 
-  def occupations_between(start_date, end_date)
-    occupations.where(
+  def occupations_between(need_occupations, start_date, end_date)
+    need_occupations.where(
       "
         (start_date >= :start_date AND start_date <= :end_date) OR
         (
@@ -29,9 +40,8 @@ class Schedule < ApplicationRecord
     )
   end
 
-  def occupations_this_week
-    puts end_week
-    occupations_between(start_week, end_week).order(
+  def occupations_this_week(need_occupations)
+    occupations_between(need_occupations, start_week, end_week).order(
       week: :asc,
       start_time: :asc
     )

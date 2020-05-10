@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_170430) do
+ActiveRecord::Schema.define(version: 2020_05_10_170926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "field_of_activities", force: :cascade do |t|
+    t.string "title"
+    t.integer "schedule_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["schedule_id"], name: "index_field_of_activities_on_schedule_id"
+  end
 
   create_table "occupations", force: :cascade do |t|
     t.string "title"
@@ -25,13 +33,17 @@ ActiveRecord::Schema.define(version: 2020_05_03_170430) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "week"
-    t.string "kind"
-    t.string "place"
+    t.integer "place_id"
+    t.integer "field_of_activity_id"
+    t.integer "type_of_week"
+    t.index ["field_of_activity_id"], name: "index_occupations_on_field_of_activity_id"
+    t.index ["place_id"], name: "index_occupations_on_place_id"
     t.index ["schedule_id"], name: "index_occupations_on_schedule_id"
+    t.index ["type_of_week"], name: "index_occupations_on_type_of_week"
   end
 
   create_table "places", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.integer "schedule_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

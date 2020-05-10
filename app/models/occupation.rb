@@ -1,5 +1,7 @@
 class Occupation < ApplicationRecord
   belongs_to :schedule
+  belongs_to :place, optional: true
+  belongs_to :field_of_activity, optional: true
 
   enum week: {
     monday: 1,
@@ -11,9 +13,26 @@ class Occupation < ApplicationRecord
     sunday: 7
   }
 
+  enum type_of_week: {
+    simple: 0,
+    odd: 1,
+    even: 2
+  }
+
   validates_presence_of :start_date, :start_time, :end_time
 
   before_save :set_week, if: :start_date_changed?
+
+  def self.custom_type_of_week
+    [
+      OpenStruct.new(id: :simple, title:
+        I18n.t('.occupation.type_of_week.simple')),
+      OpenStruct.new(id: :odd, title:
+      I18n.t('.occupation.type_of_week.odd')),
+      OpenStruct.new(id: :even, title:
+      I18n.t('.occupation.type_of_week.even'))
+    ]
+  end
 
   def set_week
     self.week = start_date.cwday

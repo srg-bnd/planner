@@ -1,5 +1,5 @@
 <div class="jumbotron p-3 jumbotron-fluid bg-light">
-  <h1 class="display-5"><%= @schedule.title %></h1>
+  <h1 class="display-5"><%= @schedule.title %> | <%= t('schedules.show.link.occupations.manage') %></h1>
   <hr class="my-4">
     <%= link_to t('occupations.show.link.schedules.show'), schedule_path(@schedule), type: "button", class: "btn btn-outline-secondary" %>
     <%= link_to t('schedules.show.link.occupations.new'), new_schedule_occupation_path(@schedule), type: "button", class: "btn btn-outline-success" %>
@@ -29,11 +29,10 @@
       <span class="badge badge-info">
         <%= render 'icons/calendar' %>
         <%= occupation.start_date&.to_s(:date) %> —
-        <%= occupation.end_date&.to_s(:date) %>
+        <%= (occupation.end_date || occupation.start_date)&.to_s(:date) %>
       </span>
     </big>
   </div>
   <% end %>
   </div>
-
 </div>

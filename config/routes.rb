@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       resources :occupations, only: [
         :index, :show, :new, :create, :edit, :update, :destroy
       ]
+      resources :places, only: [:index, :create, :update, :destroy]
+      resources :field_of_activities, only: [:index, :create, :update, :destroy]
     end
 
     defaults format: :json do

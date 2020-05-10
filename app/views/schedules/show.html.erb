@@ -4,23 +4,44 @@
     <span class="badge badge-dark">
     <%= render 'icons/calendar' %>
     <%= @schedule.start_week %> — <%= @schedule.end_week %>
+    <%= t("type_of_week.#{Schedule.type_of_week.to_s}") %>
     </span>
   </p>
   <hr class="my-4">
 
-    <%= link_to t('schedules.show.link.occupations.new'), new_schedule_occupation_path(@schedule), type: "button", class: "btn btn-outline-success" %>
-    <%= link_to schedule_occupations_path(@schedule), type: "button", class: "btn btn-outline-secondary" do %>
+    <%= link_to t('schedules.show.link.occupations.new'), new_schedule_occupation_path(@schedule), type: "button", class: "btn btn-outline-success m-1" %>
+    <%= link_to schedule_occupations_path(@schedule), type: "button", class: "btn btn-outline-secondary m-1" do %>
      <%= t('schedules.show.link.occupations.manage') %>
      <span class="badge badge-light border">
      <%= @schedule.occupations.count %>
      </span>
     <% end %>
 
+    <%= link_to schedule_places_path(@schedule), type: "button", class: "btn btn-outline-secondary m-1" do %>
+     <%= t('schedules.show.link.places.manage') %>
+     <span class="badge badge-light border">
+     <%= @schedule.places.count %>
+     </span>
+    <% end %>
+
+    <%= link_to schedule_field_of_activities_path(@schedule),
+                type: "button",
+                class: "btn btn-outline-secondary mr-1" do %>
+     <%= t('schedules.show.link.field_of_activities.manage') %>
+     <span class="badge badge-light border">
+     <%= @schedule.field_of_activities.count %>
+     </span>
+    <% end %>
+
+    <%= link_to schedule_path(@schedule),
+                type: "button",
+                class: "btn btn-outline-secondary m-1" do %>
+      <%= render 'icons/arrow_repeat' %>
+    <% end %>
   <hr class="my-4">
 
   <div class="list-group">
-    <% @schedule.occupations_this_week.each do |occupation| %>
-        
+    <% @occupations_this_week.each do |occupation| %>
       <% if @week.nil? || @week != occupation.week %>
       
         <div class="list-group-item text-light pb-0 pl-0 border-0 bg-light">
@@ -39,17 +60,24 @@
         <div class="d-flex w-100 justify-content-between">
           <h6 class="mb-1"><strong><%= occupation.title %></strong></h6>
           <span>
-
-            <% if occupation.kind.present? %>
-            <span class="badge btn btn-outline-secondary">
-              <%= render 'icons/list_ul' %> <%= occupation.kind.downcase %>
-            </span>
+            <% if occupation.field_of_activity.present? %>
+              <%= link_to schedule_path(
+                @schedule, field_of_activity_id: occupation.field_of_activity.id
+              ), style: 'text-decoration: none' do %>
+              <span class="badge btn btn-outline-secondary">
+                <%= render 'icons/list_ul' %>
+                <%= occupation.field_of_activity.title.downcase %>
+              </span>
+              <% end %>
             <% end %>
 
             <% if occupation.place.present? %>
-            <span class="badge btn btn-outline-secondary">
-              <%= render 'icons/geo_alt' %> <%= occupation.place.downcase %>
-            </span>
+              <%= link_to schedule_path(@schedule, place_id: occupation.place.id),style: 'text-decoration: none' do %>
+              <span class="badge btn btn-outline-secondary">
+                <%= render 'icons/geo_alt' %>
+                <%= occupation.place.title.downcase %>
+              </span>
+              <% end %>
             <% end %>
           </span>
         </div>
@@ -61,7 +89,6 @@
           </span>
         </span>
       </div>
-
     <% end %>
   </div>
 </div>

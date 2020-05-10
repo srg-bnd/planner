@@ -7,6 +7,14 @@ ru:
     title: Язык
     en: Английский
     ru: Русский
+  type_of_week:
+    odd: "(н)"
+    even: "(ч)"
+  occupation:
+    type_of_week:
+      simple: Обычная
+      odd: Нечётная
+      even: Чётная
   schedules:
     index:
       title:
@@ -20,6 +28,10 @@ ru:
         occupations:
           new: Новое занятие
           manage: Управление занятиями
+        places:
+          manage: Места проведения
+        field_of_activities:
+          manage: Типы занятий
   occupations:
     index:
       flash:
@@ -46,12 +58,14 @@ ru:
           title: Время начала
         end_time:
           title: Время окончания
-        kind:
+        field_of_activity:
           title: Тип занятия
-          value: Урок
+          prompt: Не выбрано
         place:
-          title: Место
-          value: Дом
+          title: Место проведения
+          prompt: Не выбрано
+        type_of_week:
+          title: Тип недели
         submit:
           title: Создать
     edit:
@@ -78,6 +92,42 @@ ru:
           title: Секретный токен
         submit:
           title: Аутентифицироваться
+  field_of_activities:
+    index:
+      you_sure: Вы уверены?
+      form:
+        title:
+          placeholder: Тип занятия
+    create:
+      flash:
+        success: Тип создан
+        danger: Ошибка при создании типа
+    update:
+      flash:
+        success: Тип обновлен
+        danger: Ошибка при обновлении типа
+    destroy:
+      flash:
+        success: Тип удален
+        danger: Ошибка при удалении типа
+  places:
+    index:
+      you_sure: Вы уверены?
+      form:
+        title:
+          placeholder: Место проведения
+    create:
+      flash:
+        success: Место созданно
+        danger: Ошибка при создании места
+    update:
+      flash:
+        success: Место обновлено
+        danger: Ошибка при обновлении места
+    destroy:
+      flash:
+        success: Место удалено
+        danger: Ошибка при удалении места
   date:
     formats:
       default: "%d.%m.%Y"

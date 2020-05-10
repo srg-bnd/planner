@@ -8,10 +8,7 @@ class OccupationsController < ApplicationController
   end
 
   def new
-    @occupation = @schedule.occupations.new(
-      kind: t('occupations.new.form.kind.value'),
-      place: t('occupations.new.form.place.value')
-    )
+    @occupation = @schedule.occupations.new
   end
 
   def create
@@ -63,8 +60,9 @@ class OccupationsController < ApplicationController
       :start_time,
       :end_date,
       :end_time,
-      :place,
-      :kind
+      :place_id,
+      :field_of_activity_id,
+      :type_of_week
     )
   end
 

@@ -1,0 +1,72 @@
+<div class='jumbotron p-3 jumbotron-fluid bg-light'>
+  <!-- Menu -->
+  <h1 class='display-5'>
+    <%= @schedule.title %> | <%= t('schedules.show.link.field_of_activities.manage') %>
+  </h1>
+
+  <hr class="my-4">
+  <%= link_to t('occupations.show.link.schedules.show'),
+              schedule_path(@schedule),
+              type: 'button',
+              class: 'btn btn-outline-secondary' %>
+  <%= link_to t('schedules.show.link.occupations.new'), 
+              new_schedule_occupation_path(@schedule),
+              type: "button",
+              class: "btn btn-outline-success" %>
+  
+  <hr class="my-4">
+  <div class="list-group">
+
+  <!-- Creation -->
+  <div class='list-group-item bg-light'>
+    <%= form_for [@schedule, @new_field_of_activity] do |f| %>
+    <div class="d-flex w-100 justify-content-between raw">
+      <div class='col-10 p-0'>
+        <h5>
+            <%= render 'form', f: f %>
+        </h5>
+      </div>
+
+    <div class='col'>
+      <big>
+        <%= button_tag type: 'submit',
+                       class: "btn btn btn-outline-success button postfix" do %>
+          <%= render 'icons/plus' %>
+        <% end %>
+      </big>
+    </div>
+    </div>
+    <% end %>
+  </div>
+
+  <!-- List -->
+  <% @field_of_activities.each do |field_of_activity| %>
+  <div class='list-group-item bg-light'>
+    <%= form_for [@schedule, field_of_activity] do |f| %>
+    <div class="d-flex w-100 justify-content-between raw">
+
+    <div class='col-10 p-0'>
+      <h5>
+        <%= render 'form', f: f %>
+      </h5>
+    </div>
+
+    <div class='col-2'>
+      <big>
+        <%= button_tag type: 'submit',
+                       class: "btn btn btn-outline-primary button postfix" do %>
+          <%= render 'icons/check' %>
+        <% end %>
+
+        <%= link_to [@schedule, field_of_activity],
+                    method: :delete,
+                    data: {confirm: t('.you_sure')},
+                    class: "btn btn btn-outline-danger" do %>
+          <%= render 'icons/trash_fill' %>
+        <% end %>
+      </big>
+    </div>
+    </div></div><% end %>
+  <% end %>
+  </div>
+</div>
