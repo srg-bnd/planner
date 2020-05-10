@@ -13,7 +13,7 @@
     <%= f.label t('occupations.new.form.type_of_week.title'),
                 for: :type_of_week  %>
     <%= f.collection_select :type_of_week, Occupation.custom_type_of_week,
-                      :id, :title, {}, class: 'form-control' %>
+                      :id, :title, {}, class: 'custom-select' %>
   </div>
 </div>
 
@@ -54,7 +54,7 @@
     <%= f.collection_select :field_of_activity_id,
                 @schedule.field_of_activities, :id, :title,
                 { prompt: t('occupations.new.form.field_of_activity.prompt') },
-                class: 'form-control' %>
+                class: 'custom-select' %>
   </div>
 
 
@@ -62,6 +62,6 @@
     <%= f.label t('occupations.new.form.place.title'), for: :place_id  %>
     <%= f.collection_select :place_id, @schedule.places, :id, :title,
                             { prompt: t('occupations.new.form.place.prompt') },
-                            class: 'form-control' %>
+                            class: 'custom-select' %>
   </div>
 </div>

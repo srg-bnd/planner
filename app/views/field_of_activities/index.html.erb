@@ -20,21 +20,17 @@
   <!-- Creation -->
   <div class='list-group-item bg-light'>
     <%= form_for [@schedule, @new_field_of_activity] do |f| %>
-    <div class="d-flex w-100 justify-content-between raw">
-      <div class='col-10 p-0'>
-        <h5>
-            <%= render 'form', f: f %>
-        </h5>
+    <div class="d-flex w-100 justify-content-between">
+      <div class='w-100 mr-1'>
+        <h5><%= render 'form', f: f %></h5>
       </div>
 
-    <div class='col'>
-      <big>
+      <div>
         <%= button_tag type: 'submit',
-                       class: "btn btn btn-outline-success button postfix" do %>
+                      class: "btn btn btn-outline-success button postfix" do %>
           <%= render 'icons/plus' %>
         <% end %>
-      </big>
-    </div>
+      </div>
     </div>
     <% end %>
   </div>
@@ -43,29 +39,27 @@
   <% @field_of_activities.each do |field_of_activity| %>
   <div class='list-group-item bg-light'>
     <%= form_for [@schedule, field_of_activity] do |f| %>
-    <div class="d-flex w-100 justify-content-between raw">
-
-    <div class='col-10 p-0'>
-      <h5>
-        <%= render 'form', f: f %>
-      </h5>
+    <div class="d-flex w-100 justify-content-between">
+      <div class='w-100 mr-1'>
+      <h5><%= render 'form', f: f %></h5>
     </div>
 
-    <div class='col-2'>
-      <big>
-        <%= button_tag type: 'submit',
-                       class: "btn btn btn-outline-primary button postfix" do %>
-          <%= render 'icons/check' %>
-        <% end %>
+    <div class='mr-1'>
+      <%= button_tag type: 'submit',
+                    class: "btn btn btn-outline-primary button postfix" do %>
+        <%= render 'icons/check' %>
+      <% end %>
+    </div>
 
-        <%= link_to [@schedule, field_of_activity],
-                    method: :delete,
-                    data: {confirm: t('.you_sure')},
-                    class: "btn btn btn-outline-danger" do %>
+    <div>
+      <%= link_to [@schedule, field_of_activity],
+                  method: :delete,
+                  data: {confirm: t('.you_sure')},
+                  class: "btn btn btn-outline-danger" do %>
           <%= render 'icons/trash_fill' %>
         <% end %>
-      </big>
     </div>
+
     </div></div><% end %>
   <% end %>
   </div>
