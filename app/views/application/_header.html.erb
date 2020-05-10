@@ -5,6 +5,10 @@
   </a>
 
   <div class="dropdown show">
+    <%= link_to new_auth_path, class: 'btn btn-light', role: 'button' do %>
+      <%= t('schedules.index.title.auth') %>
+    <% end %>
+
     <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <%= t('language.title') %>
     </a>

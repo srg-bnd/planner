@@ -27,13 +27,6 @@ class Api::V1::SchedulesController < Api::V1::BaseController
         disabled: false
       ),
       OpenStruct.new(
-        position: 1,
-        title: t('schedules.index.title.auth'),
-        href: new_auth_path,
-        active: false,
-        disabled: false
-      ),
-      OpenStruct.new(
         position: 2,
         title: t('schedules.index.title.config'),
         href: '#',
