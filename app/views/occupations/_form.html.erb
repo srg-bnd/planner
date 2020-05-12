@@ -9,7 +9,14 @@
 </div>
 
 <div class="form-row">
-  <div class='form-group col-md'>
+  <div class='form-group col-md-6'>
+    <%= f.label t('occupations.new.form.week_day.title'),
+                for: :week  %>
+    <%= f.collection_select :week, Occupation.custom_week_days,
+                      :id, :title, {}, class: 'custom-select' %>
+  </div>
+
+  <div class='form-group col-md-6'>
     <%= f.label t('occupations.new.form.type_of_week.title'),
                 for: :type_of_week  %>
     <%= f.collection_select :type_of_week, Occupation.custom_type_of_week,

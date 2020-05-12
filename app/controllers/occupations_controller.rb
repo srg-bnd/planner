@@ -4,7 +4,7 @@ class OccupationsController < ApplicationController
   before_action :find_occupation, only: [:edit, :update, :destroy]
 
   def index
-    @occupations = @schedule.occupations
+    @occupations = @schedule.occupations.order(updated_at: :desc)
   end
 
   def new
@@ -81,7 +81,8 @@ class OccupationsController < ApplicationController
       :end_time,
       :place_id,
       :field_of_activity_id,
-      :type_of_week
+      :type_of_week,
+      :week
     )
   end
 

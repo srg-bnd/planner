@@ -14,6 +14,14 @@ en:
       simple: Simple
       odd: Odd
       even: Even
+    week_days:
+      mon: Monday
+      tue: Tuesday
+      wed: Wednesday
+      thu: Thursday
+      fri: Friday
+      sat: Saturday
+      sun: Sunday
   schedules:
     index:
       title:
@@ -60,6 +68,8 @@ en:
         place:
           title: Venue
           prompt: Not selected
+        week_day:
+          title: Week day
         type_of_week:
           title: Type of week
         submit:

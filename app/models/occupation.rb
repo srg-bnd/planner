@@ -21,8 +21,6 @@ class Occupation < ApplicationRecord
 
   validates_presence_of :start_date, :start_time, :end_time
 
-  before_save :set_week, if: :start_date_changed?
-
   def self.custom_type_of_week
     [
       OpenStruct.new(id: :simple, title:
@@ -34,8 +32,35 @@ class Occupation < ApplicationRecord
     ]
   end
 
-  def set_week
-    self.week = start_date.cwday
+  def self.custom_week_days
+    [
+      OpenStruct.new(id: :monday, title:
+        I18n.t('.occupation.week_days.mon')),
+      OpenStruct.new(id: :tuesday, title:
+      I18n.t('.occupation.week_days.tue')),
+      OpenStruct.new(id: :wednesday, title:
+      I18n.t('.occupation.week_days.wed')),
+      OpenStruct.new(id: :thursday, title:
+        I18n.t('.occupation.week_days.thu')),
+      OpenStruct.new(id: :friday, title:
+      I18n.t('.occupation.week_days.fri')),
+      OpenStruct.new(id: :saturday, title:
+      I18n.t('.occupation.week_days.sat')),
+      OpenStruct.new(id: :sunday, title:
+      I18n.t('.occupation.week_days.sun'))
+    ]
+  end
+
+  def custom_week
+    {
+      monday: I18n.t('.occupation.week_days.mon'),
+      tuesday: I18n.t('.occupation.week_days.tue'),
+      wednesday: I18n.t('.occupation.week_days.wed'),
+      thursday: I18n.t('.occupation.week_days.thu'),
+      friday: I18n.t('.occupation.week_days.fri'),
+      saturday: I18n.t('.occupation.week_days.sat'),
+      sunday: I18n.t('.occupation.week_days.sun')
+    }[week.to_sym]
   end
 
   def all_week
@@ -56,9 +81,5 @@ class Occupation < ApplicationRecord
       'saturday' => '#ebdd60',
       'sunday' => '#eb60bc'
     }.fetch(week, '#50c7c7')
-  end
-
-  def start_week
-    I18n.l(start_date, format: '%A')
   end
 end

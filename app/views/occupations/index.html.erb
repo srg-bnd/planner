@@ -9,7 +9,7 @@
   <% @occupations.each do |occupation| %>
   <div class='list-group-item bg-light'>
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1"><%= occupation.title %></h5>
+      <h5 class="mb-1"><%= truncate(occupation.title, length: 20) %></h5>
       <big>
         <%= link_to edit_schedule_occupation_path(@schedule, occupation), class: "btn btn btn-outline-primary" do %>
           <%= render 'icons/pencil' %>

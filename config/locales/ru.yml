@@ -15,6 +15,14 @@ ru:
       simple: Обычная
       odd: Нечётная
       even: Чётная
+    week_days:
+      mon: Понедельник
+      tue: Вторник
+      wed: Среда
+      thu: Четверг
+      fri: Пятница
+      sat: Суббота
+      sun: Воскресенье
   schedules:
     index:
       title:
@@ -49,11 +57,11 @@ ru:
           title: Занятие
           placeholder: Математика
         start_date:
-          title: Дата и день недели начала
-          text_muted: С этой даты начинается занятие
+          title: Дата начала
+          text_muted: Должна совпадать с днём недели начала
         end_date:
-          title: Дата и день недели окончания (не обязательное)
-          text_muted: На этой дате оканчивается занятие
+          title: Дата окончания
+          text_muted: Должна совпадать с днём недели начала (не обязательное)
         start_time:
           title: Время начала
         end_time:
@@ -66,6 +74,8 @@ ru:
           prompt: Не выбрано
         type_of_week:
           title: Тип недели
+        week_day:
+          title: День недели
         submit:
           title: Создать
     edit:
