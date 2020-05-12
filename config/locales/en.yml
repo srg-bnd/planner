@@ -53,11 +53,11 @@ en:
           title: Occupation
           placeholder: Math
         start_date:
-          title: Start date and day of the week
-          text_muted: From this date the occupation starts
+          title: Start date
+          text_muted: Must match the selected days of the week
         end_date:
-          title: End date and day of the week (not mandatory)
-          text_muted: From this date the occupation ends
+          title: End date
+          text_muted: Must match the selected days of the week
         start_time:
           title: Start time
         end_time:
