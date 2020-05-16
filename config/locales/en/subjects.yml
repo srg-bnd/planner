@@ -1,0 +1,19 @@
+en:
+  subjects:
+    index:
+      you_sure: Are you sure?
+      form:
+        title:
+          placeholder: Subject
+    create:
+      flash:
+        success: Subject created 
+        danger: Error when creation a subject
+    update:
+      flash:
+        success: Subject updated 
+        danger: Error when updating a subject
+    destroy:
+      flash:
+        success: Subject deleted
+        danger: Error when deleting a subject

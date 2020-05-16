@@ -3,6 +3,7 @@ class Occupation < ApplicationRecord
   belongs_to :subject, optional: true
   belongs_to :place, optional: true
   belongs_to :field_of_activity, optional: true
+  has_one_attached :appendix
 
   enum week: {
     monday: 1,

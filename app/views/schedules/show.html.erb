@@ -97,6 +97,16 @@
             <time><%= occupation.start_time.to_s(:time) %></time> -
             <time><%= occupation.end_time.to_s(:time) %></time>
           </span>
+
+          <% if occupation.appendix.present? %>
+            <%= link_to url_for(occupation.appendix),
+              style: 'text-decoration: none',
+              target: '_blank' do %>
+              <span class="badge btn btn-outline-secondary">
+                <%= render 'icons/paperclip' %>
+              </span>
+            <% end %>
+          <% end %>
         </span>
       </div>
     <% end %>

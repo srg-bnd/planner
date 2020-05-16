@@ -95,7 +95,8 @@ class OccupationsController < ApplicationController
       :place_id,
       :field_of_activity_id,
       :type_of_week,
-      :week
+      :week,
+      :appendix
     )
   end
 

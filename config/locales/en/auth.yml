@@ -1,0 +1,9 @@
+en:
+  auth:
+    new:
+      title: Authentication
+      form:
+        secret_token:
+          title: Secret token
+        submit:
+          title: Authenticate

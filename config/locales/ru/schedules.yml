@@ -1,0 +1,40 @@
+ru:
+  schedules:
+    index:
+      title:
+        title: Расписания
+        info: Информация
+        auth: Аутентификация
+        config: Настройки
+      links:
+        show: Просмотр
+        config: Настройки
+    edit:
+      title: Настройки
+      form:
+        title:
+          title: Название
+          placeholder: Университет
+        description:
+          title: Описание
+          placeholder: Описание
+        start_date:
+          title: Дата начала первой недели
+          text_muted: По умолчанию и в случае если дата не наступила — от начала года
+        submit:
+          title: Применить
+    update:
+      flash:
+        success: Расписание настроено
+        danger: Ошибка при настройке расписания
+    show:
+      link:
+        occupations:
+          new: Новое занятие
+          manage: Управление занятиями
+        subjects:
+          manage: Предметы
+        places:
+          manage: Места проведения
+        field_of_activities:
+          manage: Типы занятий

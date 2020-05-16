@@ -1,10 +1,12 @@
 
-<div class='form-group'>
-  <%= f.label t('occupations.new.form.subject.title'), for: :subject_id  %>
-    <%= f.collection_select :subject_id, (@subjects || @schedule.subjects),
-                            :id, :title,
-                            { prompt: t('occupations.new.form.subject.prompt') },
-                            class: 'custom-select' %>
+<div class="form-row">
+  <div class='form-group col-md'>
+    <%= f.label t('occupations.new.form.subject.title'), for: :subject_id  %>
+      <%= f.collection_select :subject_id, (@subjects || @schedule.subjects),
+                              :id, :title,
+                              { prompt: t('occupations.new.form.subject.prompt') },
+                              class: 'custom-select' %>
+  </div>
 </div>
 
 <div class="form-row">
@@ -73,4 +75,17 @@
                             { prompt: t('occupations.new.form.place.prompt') },
                             class: 'custom-select' %>
   </div>
+</div>
+
+<div class='custom-file mb-3'>
+  <%= f.file_field :appendix,
+                    type: 'file',
+                    class: 'custom-file-input'
+  %>
+
+  <%= f.label t('occupations.new.form.appendix.title'),
+              for: :appendix,
+              class: 'custom-file-label',
+              'data-browse': t('occupations.new.form.appendix.data_browse')
+  %>
 </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes, { func } from 'prop-types'
+import * as locale from '../locale.js'
 
 class ScheduleLink extends React.Component {
   render() {
@@ -24,7 +25,7 @@ class Schedule extends React.Component {
           <p className="card-text">{data.description}</p>
           { data.links.map((link, i) => {
             return(
-              <ScheduleLink link={link} />
+              <ScheduleLink link={link} key={i}/>
             )
           })}
         </div>
@@ -40,7 +41,6 @@ class Schedule extends React.Component {
     )
   }
 }
-
 
 class Headers extends React.Component {
   render() {
@@ -64,7 +64,7 @@ class Schedules extends React.Component {
   }
 
   componentDidMount() {
-    fetch(path_with_locale("/api/v1/schedules"))
+    fetch(locale.path_with_locale("/api/v1/schedules"))
     .then((response) => response.json())
     .then((result) => {
       this.setState({
@@ -89,7 +89,7 @@ class Schedules extends React.Component {
       </div>
     )
     if (error) return <div>{`Catch error: ${error.message}`}</div>
-    if (!data.success) return <div>>{'Server error: ${data.error}'}</div>
+    if (!data.success) return <div>{'Server error: ${data.error}'}</div>
 
     const items = data.data
 
@@ -112,50 +112,3 @@ ReactDOM.render(
   </div>,
   document.querySelector('#index')
 )
-
-
-function path_with_locale(path) {
-  var locale = null
-  var params = getUrlParams()
-
-  if(params.locale == null) {
-    var pathname = window.location.pathname
-    var ln = pathname.split('/')[1]
-    if (['ru', 'en'].includes(ln)) locale = ln
-  } else {
-    locale = params.locale
-  }
-
-  if(locale == null) return path 
- 
-  return `/${locale}${path}`
-}
-
-/**
- * Returns a bare object of the URL's query parameters.
- * You can pass just a query string rather than a complete URL.
- * The default URL is the current page.
- */
-function getUrlParams (url) {
-  if (typeof url == 'undefined') {
-      url = window.location.search
-  }
-  var url = url.split('#')[0] // Discard fragment identifier.
-  var urlParams = {}
-  var queryString = url.split('?')[1]
-  if (!queryString) {
-      if (url.search('=') !== false) {
-          queryString = url
-      }
-  }
-  if (queryString) {
-      var keyValuePairs = queryString.split('&')
-      for (var i = 0; i < keyValuePairs.length; i++) {
-          var keyValuePair = keyValuePairs[i].split('=')
-          var paramName = keyValuePair[0]
-          var paramValue = keyValuePair[1] || ''
-          urlParams[paramName] = decodeURIComponent(paramValue.replace(/\+/g, ' '))
-      }
-  }
-  return urlParams
-}
