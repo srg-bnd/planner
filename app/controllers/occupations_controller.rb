@@ -8,7 +8,6 @@ class OccupationsController < ApplicationController
   end
 
   def new
-    @places = @schedule.places
     @occupation = @schedule.occupations.new
   end
 
@@ -25,21 +24,36 @@ class OccupationsController < ApplicationController
   def edit
     @places = []
     @field_of_activities = []
+    @subjects = []
 
     if @occupation.place.present?
       @places << Place.new(
         title: t('occupations.new.form.place.prompt')
       )
+    else
+      @occupation.place_id = nil
     end
 
     if @occupation.field_of_activity.present?
       @field_of_activities << FieldOfActivity.new(
         title: t('occupations.new.form.field_of_activity.prompt')
       )
+    else
+      @occupation.field_of_activity_id = nil
     end
 
+    if @occupation.subject.present?
+      @subjects << Subject.new(
+        title: t('occupations.new.form.subject.prompt')
+      )
+    else
+      @occupation.subject_id = nil
+    end
+
+    # @occupation.subject_id = nil
     @places += @schedule.places
     @field_of_activities += @schedule.field_of_activities
+    @subjects += @schedule.subjects
   end
 
   def update
@@ -73,7 +87,7 @@ class OccupationsController < ApplicationController
 
   def occupation_params
     params.require(:occupation).permit(
-      :title,
+      :subject_id,
       :schedule_id,
       :start_date,
       :start_time,

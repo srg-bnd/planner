@@ -68,7 +68,7 @@
 
       <div class="list-group-item rounded border bg-light">
         <div class="d-flex w-100 justify-content-between">
-          <h6 class="mb-1"><strong><%= occupation.subject.title %></strong></h6>
+          <h6 class="mb-1"><strong><%= occupation.subject&.title %></strong></h6>
           <span>
             <% if occupation.field_of_activity.present? %>
               <%= link_to schedule_path(

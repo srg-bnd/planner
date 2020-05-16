@@ -1,9 +1,9 @@
 
 <div class='form-group'>
-  <%= f.label t('occupations.new.form.subject.title'), for: :subject  %>
-    <%= f.collection_select :subject_id, @schedule.subjects,
+  <%= f.label t('occupations.new.form.subject.title'), for: :subject_id  %>
+    <%= f.collection_select :subject_id, @subjects,
                             :id, :title,
-                            {},
+                            { prompt: t('occupations.new.form.subject.prompt') },
                             class: 'custom-select' %>
 </div>
 
@@ -58,7 +58,7 @@
     <%= f.label t('occupations.new.form.field_of_activity.title'),
         for: :field_of_activity_id  %>
     <%= f.collection_select :field_of_activity_id,
-                (@field_of_activities || @schedule.field_of_activities),
+                @field_of_activities,
                 :id, :title,
                 { prompt: t('occupations.new.form.field_of_activity.prompt') },
                 class: 'custom-select' %>
@@ -67,7 +67,7 @@
 
   <div class='form-group col-md-6'>
     <%= f.label t('occupations.new.form.place.title'), for: :place_id  %>
-    <%= f.collection_select :place_id, (@places || @schedule.places),
+    <%= f.collection_select :place_id, @places,
                             :id, :title,
                             { prompt: t('occupations.new.form.place.prompt') },
                             class: 'custom-select' %>

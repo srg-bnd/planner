@@ -70,6 +70,7 @@ en:
       form:
         subject:
           title: Subject
+          prompt: Not selected
         start_date:
           title: Start date
           text_muted: Must match the selected days of the week

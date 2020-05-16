@@ -74,6 +74,7 @@ ru:
       form:
         subject:
           title: Предмет
+          prompt: Не выбрано
         start_date:
           title: Дата начала
           text_muted: Должна совпадать с выбранным днём недели
