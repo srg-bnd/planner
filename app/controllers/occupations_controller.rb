@@ -50,7 +50,6 @@ class OccupationsController < ApplicationController
       @occupation.subject_id = nil
     end
 
-    # @occupation.subject_id = nil
     @places += @schedule.places
     @field_of_activities += @schedule.field_of_activities
     @subjects += @schedule.subjects
