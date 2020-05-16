@@ -4,14 +4,24 @@ child(@schedules => :schedules) do
     time_ago_in_words(schedule.last_occupation_updated_at)
   end
 
-  node(:link) do |schedule|
-    {
-      title: t('schedules.index.link.show'),
-      href: schedule_path(schedule)
-    }
+  node(:links) do |schedule|
+    [
+      {
+        key: :show,
+        title: t('schedules.index.links.show'),
+        href: schedule_path(schedule),
+        type: :success
+      },
+      {
+        key: :config,
+        title: t('schedules.index.links.config'),
+        href: edit_schedule_path(schedule),
+        type: :primary
+      }
+    ]
   end
 end
 
-child(@menu => :menu) do
-  attributes :position, :title, :href, :active, :disabled
+node(:title) do
+  t('schedules.index.title.title')
 end

@@ -1,11 +1,10 @@
 
 <div class='form-group'>
-  <%= f.label t('occupations.new.form.title.title'), for: :title  %>
-  <%= f.text_field :title,
-                   class: 'form-control',
-                   placeholder: t('occupations.new.form.title.placeholder'),
-                   required: true
-  %>
+  <%= f.label t('occupations.new.form.subject.title'), for: :subject  %>
+    <%= f.collection_select :subject_id, @schedule.subjects,
+                            :id, :title,
+                            {},
+                            class: 'custom-select' %>
 </div>
 
 <div class="form-row">

@@ -1,10 +1,10 @@
 class OccupationsController < ApplicationController
-  around_action :have_access?
+  before_action :have_access?
   before_action :find_schedule
   before_action :find_occupation, only: [:edit, :update, :destroy]
 
   def index
-    @occupations = @schedule.occupations.order(updated_at: :desc)
+    @occupations = @schedule.occupations.order(week: :asc, start_time: :asc)
   end
 
   def new
@@ -50,7 +50,7 @@ class OccupationsController < ApplicationController
     end
 
     redirect_to schedule_occupations_path(@schedule),
-                success: t('.flash.success')
+                primary: t('.flash.success')
   end
 
   def destroy

@@ -2,6 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes, { func } from 'prop-types'
 
+class ScheduleLink extends React.Component {
+  render() {
+    const link = this.props.link
+
+    return(
+      <a className={`btn ml-1 btn-outline-${link.type}`} href={link.href}>
+        {link.title}
+      </a>
+    )
+  }
+}
+
 class Schedule extends React.Component {
   render() {
     const data = this.props.data
@@ -10,9 +22,11 @@ class Schedule extends React.Component {
         <div className="card-body text-center">
           <h5 className="card-title">{data.title}</h5>
           <p className="card-text">{data.description}</p>
-          <a className="btn btn-outline-primary" href={data.link.href}>
-            {data.link.title}
-          </a>
+          { data.links.map((link, i) => {
+            return(
+              <ScheduleLink link={link} />
+            )
+          })}
         </div>
 
         <div className="card-footer text-muted text-center">
@@ -27,35 +41,12 @@ class Schedule extends React.Component {
   }
 }
 
-class Header extends React.Component {
-  render() {
-    const link = this.props.link
-    const active = link.active ? 'active' : ''
-    const disabled = link.disabled ? 'disabled' : ''
-
-    return(
-      <a
-        className={`nav-link ${active} ${disabled}`}
-        href={this.props.link.href}>
-        {this.props.link.title}
-      </a>
-    )
-  }
-}
 
 class Headers extends React.Component {
   render() {
     return(
       <div className="card-header">
-        <ul className="nav nav-tabs card-header-tabs">
-          { this.props.menu.map((link, i) => {
-            return(
-              <li className="nav-item" key={link.position}>
-                <Header link={link} />
-              </li>
-            )
-          })}
-        </ul>
+        {this.props.title}
       </div>
     )
   }
@@ -82,7 +73,6 @@ class Schedules extends React.Component {
       })
     })
     .catch(e => {
-      console.log(e);
       this.setState({
         data: result,
         isLoaded: true,
@@ -105,7 +95,7 @@ class Schedules extends React.Component {
 
     return(
     <div className="card">
-      <Headers menu={items.menu} />
+      <Headers title={items.title} />
       { items.schedules.map((schedule, i) => {
           return(
             <Schedule data={schedule} key={schedule.id} />

@@ -1,16 +1,10 @@
 class Schedule < ApplicationRecord
   has_many :occupations
+  has_many :subjects
   has_many :places
   has_many :field_of_activities
 
-  def self.type_of_week
-    number = Time.now.strftime('%U').to_i + 1
-    number.odd? ? :odd : :even
-  end
-
-  def self.types_week
-    [:simple, Schedule.type_of_week]
-  end
+  validates_presence_of :title
 
   def start_week
     Date.today.monday
@@ -18,6 +12,20 @@ class Schedule < ApplicationRecord
 
   def end_week
     Date.today.sunday
+  end
+
+  def type_of_week
+    current_date = Date.today
+    number = current_date.strftime('%U').to_i + 1
+    # If current date < start date => use only current date
+    if start_date.present? && current_date >= start_date
+      number = ((current_date - start_date).to_i / 7) + 1
+    end
+    number.odd? ? :odd : :even
+  end
+
+  def types_week
+    [:simple, type_of_week]
   end
 
   def last_occupation_updated_at

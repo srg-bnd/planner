@@ -9,6 +9,29 @@
      </span>
   <% end %>
 
+    <%= link_to schedule_subjects_path(@schedule), type: "button", class: "btn btn-outline-secondary m-1" do %>
+     <%= t('schedules.show.link.subjects.manage') %>
+     <span class="badge badge-light border">
+     <%= @schedule.subjects.count %>
+     </span>
+  <% end %>
+
+  <%= link_to schedule_places_path(@schedule), type: "button", class: "btn btn-outline-secondary m-1" do %>
+     <%= t('schedules.show.link.places.manage') %>
+     <span class="badge badge-light border">
+     <%= @schedule.places.count %>
+     </span>
+  <% end %>
+
+  <%= link_to schedule_field_of_activities_path(@schedule),
+              type: "button",
+              class: "btn btn-outline-secondary mr-1" do %>
+     <%= t('schedules.show.link.field_of_activities.manage') %>
+     <span class="badge badge-light border">
+     <%= @schedule.field_of_activities.count %>
+     </span>
+  <% end %>
+
   <hr class="my-4">
   <%= form_for [@schedule, @occupation], method: :put  do |f| %>
     <%= render 'form', f: f %>

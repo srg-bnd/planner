@@ -7,8 +7,8 @@ en:
     en: English
     ru: Russian
   type_of_week:
-    odd: "(o)"
-    even: "(e)"
+    odd: "odd week"
+    even: "even week"
   occupation:
     type_of_week:
       simple: Simple
@@ -25,16 +25,35 @@ en:
   schedules:
     index:
       title:
+        title: Schedules
         info: Info
         auth: Auth
         config: Config
-      link:
+      links:
         show: Show
+        config: Config
+    edit:
+      title: Config
+      form:
+        title:
+          title: Name
+          placeholder: University
+        start_date:
+          title: Start date of the first week
+          text_muted: By default, and if the date does not occur — from the beginning of the year
+        submit:
+          title: Сonfigure
+    update:
+      flash:
+        success: Schedule configured
+        danger: Error when configure an schedule
     show:
       link:
         occupations:
           new: New occupation
           manage: Manage occupations
+        subjects:
+          manage: Subjects
         places:
           manage: Venue
         field_of_activities:
@@ -49,9 +68,8 @@ en:
     new:
       title: New occupation
       form:
-        title:
-          title: Occupation
-          placeholder: Math
+        subject:
+          title: Subject
         start_date:
           title: Start date
           text_muted: Must match the selected days of the week
@@ -90,6 +108,24 @@ en:
     destroy:
       flash:
         danger: Error deleting an occupation
+  subjects:
+    index:
+      you_sure: Are you sure?
+      form:
+        title:
+          placeholder: Subject
+    create:
+      flash:
+        success: Subject created 
+        danger: Error when creation a subject
+    update:
+      flash:
+        success: Subject updated 
+        danger: Error when updating a subject
+    destroy:
+      flash:
+        success: Subject deleted
+        danger: Error when deleting a subject
   places:
     index:
       you_sure: Are you sure?

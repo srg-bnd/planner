@@ -8,8 +8,8 @@ ru:
     en: Английский
     ru: Русский
   type_of_week:
-    odd: "(н)"
-    even: "(ч)"
+    odd: "нечётная неделя"
+    even: "чётная неделя"
   occupation:
     type_of_week:
       simple: Обычная
@@ -26,16 +26,35 @@ ru:
   schedules:
     index:
       title:
+        title: Расписания
         info: Информация
         auth: Аутентификация
         config: Настройки
-      link:
+      links:
         show: Просмотр
+        config: Настройки
+    edit:
+      title: Настройки
+      form:
+        title:
+          title: Название
+          placeholder: Университет
+        start_date:
+          title: Дата начала первой недели
+          text_muted: По умолчанию и в случае если дата не наступила — от начала года
+        submit:
+          title: Настроить
+    update:
+      flash:
+        success: Расписание настроено
+        danger: Ошибка при настройке расписания
     show:
       link:
         occupations:
           new: Новое занятие
           manage: Управление занятиями
+        subjects:
+          manage: Предметы
         places:
           manage: Места проведения
         field_of_activities:
@@ -53,9 +72,8 @@ ru:
       flash:
       title: Новое занятие
       form:
-        title:
-          title: Занятие
-          placeholder: Математика
+        subject:
+          title: Предмет
         start_date:
           title: Дата начала
           text_muted: Должна совпадать с выбранным днём недели
@@ -138,6 +156,24 @@ ru:
       flash:
         success: Место удалено
         danger: Ошибка при удалении места
+  subjects:
+    index:
+      you_sure: Вы уверены?
+      form:
+        title:
+          placeholder: Предмет
+    create:
+      flash:
+        success: Предмет создан
+        danger: Ошибка при создании предмета
+    update:
+      flash:
+        success: Предмет обновлен
+        danger: Ошибка при обновлении предмета
+    destroy:
+      flash:
+        success: Предмет удален
+        danger: Ошибка при удалении предмета
   date:
     formats:
       default: "%d.%m.%Y"

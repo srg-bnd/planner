@@ -9,6 +9,13 @@
      </span>
   <% end %>
 
+  <%= link_to schedule_subjects_path(@schedule), type: "button", class: "btn btn-outline-secondary m-1" do %>
+     <%= t('schedules.show.link.subjects.manage') %>
+     <span class="badge badge-light border">
+     <%= @schedule.subjects.count %>
+     </span>
+  <% end %>
+
   <%= link_to schedule_places_path(@schedule), type: "button", class: "btn btn-outline-secondary m-1" do %>
      <%= t('schedules.show.link.places.manage') %>
      <span class="badge badge-light border">

@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  around_action :have_access?
+  before_action :have_access?
   before_action :find_schedule
   before_action :find_place, only: [:update, :destroy]
 
@@ -26,7 +26,7 @@ class PlacesController < ApplicationController
     end
 
     redirect_to schedule_places_path(@schedule),
-                success: t('.flash.success')
+                primary: t('.flash.success')
   end
 
   def destroy

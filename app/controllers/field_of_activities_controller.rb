@@ -1,5 +1,5 @@
 class FieldOfActivitiesController < ApplicationController
-  around_action :have_access?
+  before_action :have_access?
   before_action :find_schedule
   before_action :find_field_of_activity, only: [:update, :destroy]
 
@@ -27,7 +27,7 @@ class FieldOfActivitiesController < ApplicationController
     end
 
     redirect_to schedule_field_of_activities_path(@schedule),
-                success: t('.flash.success')
+                primary: t('.flash.success')
   end
 
   def destroy

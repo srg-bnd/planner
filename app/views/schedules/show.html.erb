@@ -2,9 +2,12 @@
   <h1 class="display-5"><%= @schedule.title %></h1>
   <p class="lead">
     <span class="badge badge-dark">
-    <%= render 'icons/calendar' %>
-    <%= @schedule.start_week %> — <%= @schedule.end_week %>
-    <%= t("type_of_week.#{Schedule.type_of_week.to_s}") %>
+      <%= render 'icons/calendar' %>
+      <%= @schedule.start_week %> — <%= @schedule.end_week %>
+    </span>
+
+    <span class="badge badge-dark">
+      <%= t("type_of_week.#{@schedule.type_of_week.to_s}") %>
     </span>
   </p>
   <hr class="my-4">
@@ -14,6 +17,13 @@
      <%= t('schedules.show.link.occupations.manage') %>
      <span class="badge badge-light border">
      <%= @schedule.occupations.count %>
+     </span>
+    <% end %>
+
+    <%= link_to schedule_subjects_path(@schedule), type: "button", class: "btn btn-outline-secondary m-1" do %>
+     <%= t('schedules.show.link.subjects.manage') %>
+     <span class="badge badge-light border">
+     <%= @schedule.subjects.count %>
      </span>
     <% end %>
 
@@ -58,7 +68,7 @@
 
       <div class="list-group-item rounded border bg-light">
         <div class="d-flex w-100 justify-content-between">
-          <h6 class="mb-1"><strong><%= occupation.title %></strong></h6>
+          <h6 class="mb-1"><strong><%= occupation.subject.title %></strong></h6>
           <span>
             <% if occupation.field_of_activity.present? %>
               <%= link_to schedule_path(

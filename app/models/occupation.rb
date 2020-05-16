@@ -1,5 +1,6 @@
 class Occupation < ApplicationRecord
   belongs_to :schedule
+  belongs_to :subject, optional: true
   belongs_to :place, optional: true
   belongs_to :field_of_activity, optional: true
 
@@ -68,7 +69,7 @@ class Occupation < ApplicationRecord
   end
 
   def current_week_day
-    all_week[start_date.cwday - 1]
+    all_week[Occupation.weeks[week] - 1]
   end
 
   def color
