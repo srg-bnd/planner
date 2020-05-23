@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tasks/index'
+  get 'tasks/new'
   root 'schedules#index'
   get '/:locale' => 'schedules#index'
 
@@ -8,7 +10,10 @@ Rails.application.routes.draw do
     resources :schedules, only: [:index, :show, :edit, :update] do
       resources :occupations, only: [
         :index, :show, :new, :create, :edit, :update, :destroy
-      ]
+      ] do
+        resources :tasks, only: [:index, :create, :update, :destroy]
+      end
+
       resources :subjects, only: [:index, :create, :update, :destroy]
       resources :places, only: [:index, :create, :update, :destroy]
       resources :field_of_activities, only: [:index, :create, :update, :destroy]

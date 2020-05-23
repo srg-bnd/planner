@@ -1,0 +1,135 @@
+<div class="jumbotron p-3 jumbotron-fluid bg-light">
+  <h1 class="display-5">
+    <%= @schedule.title %> | <%= t('tasks.index.title') %>
+  </h1>
+  <p class="lead">
+    <span class="badge badge-dark">
+      <%= render 'icons/calendar' %>
+      <%= @schedule.start_week %> — <%= @schedule.end_week %>
+    </span>
+
+    <span class="badge badge-dark">
+      <%= t("type_of_week.#{@schedule.type_of_week.to_s}") %>
+    </span>
+  </p>
+  <hr class="my-4">
+
+  <%= link_to t('occupations.show.link.schedules.show'), schedule_path(@schedule), type: "button", class: "btn btn-outline-secondary" %>  
+ 
+  <hr class="my-4">
+
+  <div class="list-group">      
+    <div class="list-group-item text-light pb-0 pl-0 border-0 bg-light">
+      <div class="d-flex w-100 justify-content-between">
+        <h6 class='rounded p-1 mb-0' style='background: <%= @occupation.color %>'>
+        <small><strong><%= @occupation.custom_week %></strong> |
+        <%= @occupation.current_week_day.to_s(:date) %>
+          </small>
+        </h6>
+        </div>
+      </div>
+
+      <div class="list-group-item rounded border bg-light">
+        <div class="d-flex w-100 justify-content-between">
+          <h6 class="mb-1"><strong><%= @occupation.subject&.title %></strong></h6>
+          <span>
+            <% if @occupation.field_of_activity.present? %>
+              <%= link_to schedule_path(
+                @schedule, field_of_activity_id: @occupation.field_of_activity.id
+              ), style: 'text-decoration: none' do %>
+              <span class="badge btn btn-outline-secondary">
+                <%= render 'icons/list_ul' %>
+                <%= @occupation.field_of_activity.title.downcase %>
+              </span>
+              <% end %>
+            <% end %>
+
+            <% if @occupation.place.present? %>
+              <%= link_to schedule_path(@schedule, place_id: @occupation.place.id),style: 'text-decoration: none' do %>
+              <span class="badge btn btn-outline-secondary">
+                <%= render 'icons/geo_alt' %>
+                <%= @occupation.place.title.downcase %>
+              </span>
+              <% end %>
+            <% end %>
+          </span>
+        </div>
+        <span>
+
+          <%= link_to schedule_occupation_tasks_path(@schedule, @occupation),
+                      style: 'text-decoration: none' do %>
+            <span class="badge btn btn-outline-secondary">
+              <%= render 'icons/stopwatch' %>
+              <time><%= @occupation.start_time.to_s(:time) %></time> -
+              <time><%= @occupation.end_time.to_s(:time) %></time>
+            </span>
+          <% end %>
+
+          <% if @occupation.appendix.present? %>
+            <%= link_to url_for(@occupation.appendix),
+              style: 'text-decoration: none',
+              target: '_blank' do %>
+              <span class="badge btn btn-outline-secondary">
+                <%= render 'icons/paperclip' %>
+              </span>
+            <% end %>
+          <% end %>
+        </span>
+  </div>
+
+  <div class="list-group">
+
+  <!-- Creation -->
+  <div class='list-group-item bg-light'>
+    <%= form_for [@schedule, @occupation, @task] do |f| %>
+    <div class="d-flex w-100 justify-content-between">
+      <div class='w-100 mr-1'>
+        <h5><%= render 'form', f: f %></h5>
+      </div>
+
+    <div>
+      <%= button_tag type: 'submit',
+                     class: "btn btn-outline-success button postfix" do %>
+        <%= render 'icons/plus' %>
+      <% end %>    </div>
+    </div>
+    <% end %>
+  </div>
+
+  <!-- List -->
+  <% @tasks.each do |task| %>
+  <div class='list-group-item bg-light'>
+    <%= form_for [@schedule, @occupation, task] do |f| %>
+    <div class="d-flex w-100 justify-content-between">
+
+    <div class='w-100 mr-1'>
+      <%= f.check_box :complete,
+                        class: 'form-check-input mt-2',
+                        placeholder: t('tasks.index.form.title.placeholder'),
+                        title: t('tasks.index.form.complete.title')
+      %>
+
+      <%= render 'form', f: f %>
+    </div>
+
+    <div class='mr-1'>
+      <%= button_tag type: 'submit',
+                     class: "btn btn btn-outline-primary button postfix" do %>
+        <%= render 'icons/check' %>
+      <% end %>
+    </div>
+
+    <div>
+      <%= link_to [@schedule, @occupation, task],
+                  method: :delete,
+                  data: {confirm: t('.you_sure')},
+                  class: "btn btn btn-outline-danger" do %>
+        <%= render 'icons/trash_fill' %>
+      <% end %>
+    </div>
+
+    </div></div><% end %>
+  <% end %>
+  </div>
+
+</div>
