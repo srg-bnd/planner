@@ -1,14 +1,14 @@
 ru:
   occupation:
     type_of_week:
-      simple: Simple
-      odd: Odd
-      even: Even
+      simple: Обычная
+      odd: Нечётная
+      even: Чётная
     week_days:
-      mon: Monday
-      tue: Tuesday
-      wed: Wednesday
-      thu: Thursday
-      fri: Friday
-      sat: Saturday
-      sun: Sunday
+      mon: Понедельник
+      tue: Вторник
+      wed: Среда
+      thu: Четверг
+      fri: Пятница
+      sat: Суббота
+      sun: Воскресенье
