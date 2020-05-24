@@ -56,13 +56,17 @@
         </div>
         <span>
 
+        <span class="badge btn btn-outline-secondary">
+            <%= render 'icons/stopwatch' %>
+            <time><%= @occupation.start_time.to_s(:time) %></time> -
+            <time><%= @occupation.end_time.to_s(:time) %></time>
+          </span>
+
           <%= link_to schedule_occupation_tasks_path(@schedule, @occupation),
                       style: 'text-decoration: none' do %>
-            <span class="badge btn btn-outline-secondary">
-              <%= render 'icons/stopwatch' %>
-              <time><%= @occupation.start_time.to_s(:time) %></time> -
-              <time><%= @occupation.end_time.to_s(:time) %></time>
-            </span>
+              <span class="badge btn btn-outline-secondary">
+                <%= render 'icons/list_ul' %> <%= @occupation.tasks.count %>
+              </span>
           <% end %>
 
           <% if @occupation.appendix.present? %>
