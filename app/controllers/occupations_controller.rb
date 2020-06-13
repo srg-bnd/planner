@@ -1,6 +1,6 @@
 class OccupationsController < ApplicationController
   before_action :have_access?
-  before_action :find_schedule
+  before_action :find_schedule_with_prefix
   before_action :find_occupation, only: [:edit, :update, :destroy]
 
   def index
@@ -75,14 +75,6 @@ class OccupationsController < ApplicationController
   end
 
   private
-
-  def find_schedule
-    @schedule = Schedule.find(params[:schedule_id])
-  end
-
-  def find_occupation
-    @occupation = Occupation.find(params[:id])
-  end
 
   def occupation_params
     params.require(:occupation).permit(

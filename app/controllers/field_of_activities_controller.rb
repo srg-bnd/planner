@@ -1,6 +1,6 @@
 class FieldOfActivitiesController < ApplicationController
   before_action :have_access?
-  before_action :find_schedule
+  before_action :find_schedule_with_prefix
   before_action :find_field_of_activity, only: [:update, :destroy]
 
   def index
@@ -39,14 +39,6 @@ class FieldOfActivitiesController < ApplicationController
   end
 
   private
-
-  def find_schedule
-    @schedule = Schedule.find(params[:schedule_id])
-  end
-
-  def find_field_of_activity
-    @field_of_activity = FieldOfActivity.find(params[:id])
-  end
 
   def field_of_activity_params
     params.require(:field_of_activity).permit(

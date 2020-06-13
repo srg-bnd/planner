@@ -5,19 +5,7 @@ class SchedulesController < ApplicationController
   def index; end
 
   def show
-    occupations = @schedule.occupations.where(
-      type_of_week: @schedule.types_week
-    )
-
-    if params[:place_id].present?
-      occupations = occupations.where(place_id: params[:place_id])
-    end
-    if params[:field_of_activity_id].present?
-      occupations = occupations.where(
-        field_of_activity_id: params[:field_of_activity_id]
-      )
-    end
-    @occupations_this_week = @schedule.occupations_this_week(occupations)
+    @occupations_this_week = occupations_this_week_service.call(params)
   end
 
   def edit; end
@@ -35,10 +23,6 @@ class SchedulesController < ApplicationController
 
   private
 
-  def find_schedule
-    @schedule = Schedule.find(params[:id])
-  end
-
   def schedule_params
     params.require(:schedule).permit(
       :title,
@@ -49,5 +33,9 @@ class SchedulesController < ApplicationController
 
   def update_params
     schedule_params
+  end
+
+  def occupations_this_week_service
+    Occupations::ThisWeekService.new(@schedule)
   end
 end

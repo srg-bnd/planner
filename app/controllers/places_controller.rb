@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
   before_action :have_access?
-  before_action :find_schedule
+  before_action :find_schedule_with_prefix
   before_action :find_place, only: [:update, :destroy]
 
   def index
@@ -38,14 +38,6 @@ class PlacesController < ApplicationController
   end
 
   private
-
-  def find_schedule
-    @schedule = Schedule.find(params[:schedule_id])
-  end
-
-  def find_place
-    @place = Place.find(params[:id])
-  end
 
   def place_params
     params.require(:place).permit(

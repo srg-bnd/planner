@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :have_access?
-  before_action :find_schedule
+  before_action :find_schedule_with_prefix
   before_action :find_subject, only: [:update, :destroy]
 
   def index
@@ -38,14 +38,6 @@ class SubjectsController < ApplicationController
   end
 
   private
-
-  def find_schedule
-    @schedule = Schedule.find(params[:schedule_id])
-  end
-
-  def find_subject
-    @subject = Subject.find(params[:id])
-  end
 
   def subject_params
     params.require(:subject).permit(
