@@ -1,24 +1,8 @@
-# README
+# Planning system — E-School
+Every business or activity has processes that must be planned.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+E-School provides the following features:
+* Managing schedules
+* Managing occupations
+* Managing tasks
+* Managing directories
