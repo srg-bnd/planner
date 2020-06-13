@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  get 'tasks/index'
-  get 'tasks/new'
   root 'schedules#index'
   get '/:locale' => 'schedules#index'
 
   scope '(:locale)', locale: /en|ru/ do
-    resources :auth, only: [:new, :create]
+    devise_for :users
+    get 'cabinet' => 'cabinet#show'
 
     resources :schedules, only: [:index, :show, :edit, :update] do
       resources :occupations, only: [

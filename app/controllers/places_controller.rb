@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :have_access?
+  before_action :authenticate_user!
   before_action :find_schedule_with_prefix
   before_action :find_place, only: [:update, :destroy]
 

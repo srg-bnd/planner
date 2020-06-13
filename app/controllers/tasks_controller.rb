@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :have_access?, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :find_schedule_with_prefix
   before_action :find_occupation_with_prefix
   before_action :find_task, only: [:update, :destroy]

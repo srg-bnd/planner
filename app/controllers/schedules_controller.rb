@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :have_access?, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:edit, :update]
   before_action :find_schedule, only: [:show, :edit, :update]
 
   def index; end

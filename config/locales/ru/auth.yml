@@ -1,9 +1,0 @@
-ru:
-  auth:
-    new:
-      title: Аутентификация
-      form:
-        secret_token:
-          title: Секретный токен
-        submit:
-          title: Аутентифицироваться
