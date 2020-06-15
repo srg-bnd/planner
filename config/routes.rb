@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  default_url_options host: ENV['DEFAULT_URL_OPTIONS']
+
   root 'schedules#index'
   get '/:locale' => 'schedules#index'
 
