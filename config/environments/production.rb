@@ -111,7 +111,6 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.active_storage.service = :local
   config.action_mailer.default_url_options = {
-    host: ENV['RAILS_HOST'],
-    port: ENV['RAILS_PORT']
+    host: ENV['DEFAULT_URL_OPTIONS']
   }
 end
