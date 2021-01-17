@@ -5,9 +5,9 @@ class TasksController < ApplicationController
   before_action :find_task, only: [:update, :destroy]
 
   def index
-    @tasks = @occupation.tasks.where(
-      occupation_date: @occupation.current_week_day
-    ).order(complete: :asc, created_at: :desc)
+    @tasks = @occupation.tasks
+                        .order(complete: :asc, created_at: :desc)
+    #                   .where(occupation_date: @occupation.current_week_day)
     @task = Task.new
   end
 
