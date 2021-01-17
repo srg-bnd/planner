@@ -3,7 +3,7 @@
 # Schedules Controller
 class Api::V1::SchedulesController < Api::V1::BaseController
   def index
-    @schedules = Schedule.all.order(created_at: :asc)
+    @schedules = current_user.schedules.order(created_at: :asc)
   end
 
   private

@@ -50,7 +50,7 @@ class Schedules extends React.Component {
 
     return(
     <div className="card">
-      <Headers title={items.title} />
+      <Headers title={items.title} links={items.links} />
       { items.schedules.map((schedule, i) => {
           return(
             <Schedule data={schedule} key={schedule.id} />

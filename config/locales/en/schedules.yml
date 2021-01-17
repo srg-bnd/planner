@@ -23,10 +23,20 @@ en:
           text_muted: By default, and if the date does not occur — from the beginning of the year
         submit:
           title: Apply
+    create:
+      flash:
+        success: Schedule created
+        danger: Error when created an schedule
     update:
       flash:
         success: Schedule configured
         danger: Error when configure an schedule
+    destroy:
+      title: Delete
+      confirm: Are you sure?
+      flash:
+        success: Schedule deleted
+        danger: Error when delete an schedule
     show:
       link:
         occupations:

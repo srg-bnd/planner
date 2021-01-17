@@ -1,5 +1,5 @@
 {
-  "name": "e_school",
+  "name": "super_plan",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.9.4",
