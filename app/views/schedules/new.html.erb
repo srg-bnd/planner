@@ -1,6 +1,6 @@
 <div class="jumbotron p-3 jumbotron-fluid bg-light">
   <h1 class="display-5">
-    <%= @schedule.title %> | <%= t('schedules.edit.title') %>
+    <%= t('schedules.new.title') %>
   </h1>
   <p class="lead">
     <span class="badge badge-dark">
@@ -16,11 +16,6 @@
 
   <%= form_for @schedule do |f| %>
     <%= render 'form', f: f %>
-    <%= f.submit t('schedules.edit.form.submit.title'), type: 'submit', class: 'btn btn-outline-primary' %>
-    <%= link_to t('schedules.destroy.title'),
-                schedule_path(@schedule),
-                method: :delete,
-                class: 'btn btn-outline-danger',
-                data: { confirm: t('schedules.destroy.confirm') } %>
+    <%= f.submit t('schedules.new.form.submit.title'), type: 'submit', class: 'btn btn-outline-primary' %>
   <% end %>
 </div>

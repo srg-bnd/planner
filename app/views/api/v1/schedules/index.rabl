@@ -1,3 +1,9 @@
+child(:links) do
+  node(:create) do
+    new_schedule_path
+  end
+end
+
 child(@schedules => :schedules) do
   attributes :id, :title, :description
   node(:last_occupation_updated_at) do |schedule|

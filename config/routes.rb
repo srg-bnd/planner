@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     devise_for :users
     get 'cabinet' => 'cabinet#show'
 
-    resources :schedules, only: [:index, :show, :edit, :update] do
+    resources :schedules, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resources :occupations, only: [
         :index, :show, :new, :create, :edit, :update, :destroy
       ] do

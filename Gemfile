@@ -23,12 +23,14 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-# gem 'devise'
+
+# Authentication
 gem 'devise'
+# Authorization
+gem 'cancancan'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-# Managing ENV variables
-gem 'dotenv-rails', '~> 2.7'
+
 # Telegram Bot API
 gem 'telegram-bot'
 # Json rendering
@@ -41,6 +43,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0.beta4'
   # A library for setting up Rails objects as test data
   gem 'factory_bot_rails'
+  # Load environment variables
+  gem 'dotenv-rails'
 end
 
 group :development do

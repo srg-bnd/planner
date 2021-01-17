@@ -1,7 +1,7 @@
-# Planning system — E-School
+# Planning system — Super Plan
 Every business or activity has processes that must be planned.
 
-E-School provides the following features:
+Super Plan provides the following features:
 * Managing schedules
 * Managing occupations
 * Managing tasks

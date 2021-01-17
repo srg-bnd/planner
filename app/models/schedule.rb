@@ -1,8 +1,13 @@
+# frozen_string_literal: true
+
 class Schedule < ApplicationRecord
   has_many :occupations
   has_many :subjects
   has_many :places
   has_many :field_of_activities
+
+  has_many :users_schedules
+  has_many :users, through: :users_schedules
 
   validates_presence_of :title
 

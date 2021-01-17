@@ -9,6 +9,11 @@ ru:
       links:
         show: Просмотр
         config: Настройки
+    new:
+      title: Создание расписания
+      form:
+        submit:
+          title: Создать
     edit:
       title: Настройки
       form:
@@ -23,10 +28,20 @@ ru:
           text_muted: По умолчанию и в случае если дата не наступила — от начала года
         submit:
           title: Применить
+    create:
+      flash:
+        success: Расписание создано
+        danger: Ошибка при создании расписания
     update:
       flash:
         success: Расписание настроено
         danger: Ошибка при настройке расписания
+    destroy:
+      title: Удалить
+      confirm: Вы уверены?
+      flash:
+        success: Расписание удалено
+        danger: Ошибка при удалении расписания
     show:
       link:
         occupations:
