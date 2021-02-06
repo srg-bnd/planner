@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :find_schedule_with_prefix

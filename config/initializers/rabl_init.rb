@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rabl'
 
 Rabl.configure do |config|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SubjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_schedule_with_prefix

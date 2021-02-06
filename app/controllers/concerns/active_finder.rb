@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ActiveFinder
   # Schedule
   def find_schedule(id = :id)

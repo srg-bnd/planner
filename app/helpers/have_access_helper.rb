@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HaveAccessHelper
   def have_access?
     return if session[:secret_token] == ENV['CONTROLLER_SECRET_TOKEN']

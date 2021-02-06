@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def pagination(objects)
     return objects unless params[:page].present?
