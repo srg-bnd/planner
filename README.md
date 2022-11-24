@@ -1,7 +1,8 @@
-# Planning system — Xaoc
-Every business or activity has processes that must be planned.
+# Xaoc
 
-Super Plan provides the following features:
+Order in everything!
+
+## Features:
 * Managing schedules
 * Managing occupations
 * Managing tasks
