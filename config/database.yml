@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV.fetch('RAILS_DB_USERNAME') %>
+  password: <%= ENV.fetch('RAILS_DB_PASSWORD') %>
+  host: <%= ENV.fetch('RAILS_DB_HOST') { 'localhost' } %>
+  port: <%= ENV.fetch('RAILS_DB_PORT') { 5432 } %>
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: <%= ENV.fetch('RAILS_DB_DEVELOPMENT') { 'xaoc_development' } %>
+
+test:
+  <<: *default
+  database: <%= ENV.fetch('RAILS_DB_TEST') { 'xaoc_test' } %>
+
+production:
+  <<: *default
+  database: <%= ENV.fetch('RAILS_DB_PRODUCTION') { 'xaoc_production' } %>

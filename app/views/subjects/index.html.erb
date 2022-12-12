@@ -1,0 +1,67 @@
+<div class='jumbotron p-3 jumbotron-fluid bg-light'>
+  <!-- Menu -->
+  <h1 class='display-5'>
+    <%= @schedule.title %> | <%= t('schedules.show.link.subjects.manage') %>
+  </h1>
+
+  <hr class="my-4">
+  <div>
+  <%= link_to t('occupations.show.link.schedules.show'),
+              schedule_path(@schedule),
+              type: 'button',
+              class: 'btn btn-outline-secondary m-1' %>
+  <%= link_to t('schedules.show.link.occupations.new'), 
+              new_schedule_occupation_path(@schedule),
+              type: "button",
+              class: "btn btn-outline-success m-1" %>
+  </div>  
+  <hr class="my-4">
+  <div class="list-group">
+
+  <!-- Creation -->
+  <div class='list-group-item bg-light'>
+    <%= form_for [@schedule, @new_subject] do |f| %>
+    <div class="d-flex w-100 justify-content-between">
+      <div class='w-100 mr-1'>
+        <h5><%= render 'form', f: f %></h5>
+      </div>
+
+    <div>
+      <%= button_tag type: 'submit',
+                     class: "btn btn-outline-success button postfix" do %>
+        <%= render 'icons/plus' %>
+      <% end %>    </div>
+    </div>
+    <% end %>
+  </div>
+
+  <!-- List -->
+  <% @subjects.each do |subject| %>
+  <div class='list-group-item bg-light'>
+    <%= form_for [@schedule, subject] do |f| %>
+    <div class="d-flex w-100 justify-content-between">
+
+    <div class='w-100 mr-1'>
+      <h5><%= render 'form', f: f %></h5>
+    </div>
+
+    <div class='mr-1'>
+      <%= button_tag type: 'submit',
+                     class: "btn btn btn-outline-primary button postfix" do %>
+        <%= render 'icons/check' %>
+      <% end %>
+    </div>
+
+    <div>
+      <%= link_to [@schedule, subject],
+                  method: :delete,
+                  data: {confirm: t('.you_sure')},
+                  class: "btn btn btn-outline-danger" do %>
+        <%= render 'icons/trash_fill' %>
+      <% end %>
+    </div>
+
+    </div></div><% end %>
+  <% end %>
+  </div>
+</div>

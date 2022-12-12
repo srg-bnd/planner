@@ -1,0 +1,55 @@
+en:
+  occupations:
+    index:
+      you_sure: Are you sure?
+    show:
+      link:
+        schedules:
+          show: Schedule
+    new:
+      title: New occupation
+      form:
+        subject:
+          title: Subject
+          prompt: Not selected
+        start_date:
+          title: Start date
+          text_muted: Must match the selected days of the week
+        end_date:
+          title: End date
+          text_muted: Must match the selected days of the week
+        start_time:
+          title: Start time
+        end_time:
+          title: End time
+        field_of_activity:
+          title: Field of activity
+          prompt: Not selected
+        place:
+          title: Venue
+          prompt: Not selected
+        week_day:
+          title: Week day
+        type_of_week:
+          title: Type of week
+        appendix:
+          title: Appendix...
+          data_browse: Browse
+        submit:
+          title: Create
+    edit:
+      title: Edit occupation
+      form:
+        submit:
+          title: Update
+    create:
+      flash:
+        success: Occupation created 
+        danger: Error when creating an occupation
+    update:
+      flash:
+        success: Occupation updated
+        danger: Error occurred while updating occupation
+    destroy:
+      flash:
+        danger: Error deleting an occupation

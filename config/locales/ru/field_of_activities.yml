@@ -1,0 +1,19 @@
+ru:
+  field_of_activities:
+    index:
+      you_sure: Вы уверены?
+      form:
+        title:
+          placeholder: Тип занятия
+    create:
+      flash:
+        success: Тип создан
+        danger: Ошибка при создании типа
+    update:
+      flash:
+        success: Тип обновлен
+        danger: Ошибка при обновлении типа
+    destroy:
+      flash:
+        success: Тип удален
+        danger: Ошибка при удалении типа

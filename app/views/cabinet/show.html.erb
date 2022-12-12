@@ -1,0 +1,14 @@
+<div class='jumbotron p-3 jumbotron-fluid bg-light'>
+  <!-- Menu -->
+  <h1 class='display-5'>
+    <%= t('cabinet.show.title') %> | <%= current_user.email %>
+  </h1>
+
+  <hr class="my-4">
+  <div>
+    <%= link_to t('cabinet.show.links.exit'),
+                destroy_user_session_path, method: :delete,
+                class: 'btn btn-danger' %>
+  </div>  
+  <hr class="my-4">
+</div>
