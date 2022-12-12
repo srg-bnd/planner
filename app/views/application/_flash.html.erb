@@ -1,9 +1,0 @@
-<% flash.each do |key, message| %>
-  <% key = 'secondary' if key == 'alert' %>
-  <div class="alert alert-<%= key %> alert-dismissible fade show m-1" role="alert">
-    <strong></strong> <%= message %>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-<% end %>
