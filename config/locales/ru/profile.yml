@@ -1,5 +1,8 @@
 ru:
   profile:
+    tabs:
+      profile: "Профиль"
+      notifications: "Уведомления"
     fields:
       email: "Email"
       username: "Псевдоним"

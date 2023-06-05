@@ -1,5 +1,8 @@
 en:
   profile:
+    tabs:
+      profile: "Profile"
+      notifications: "Notifications"
     fields:
       email: "Email"
       username: "Username"

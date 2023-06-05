@@ -16,7 +16,7 @@
                 <div class="list-icon"><i class="fa fa-envelope"></i></div>
                 <div class="list-details">
                   <span><%= current_user.email %></span>
-                  <small>Email</small>
+                  <small><%= t('profile.fields.email') %></small>
                 </div>
               </li>
             </ul>
@@ -51,10 +51,10 @@
         <div class="card-body">
           <ul class="nav nav-pills nav-pills-primary nav-justified">
             <li class="nav-item">
-              <a href="javascript:void();" data-target="#profile" data-toggle="pill" class="nav-link active show"><i class="icon-note"></i> <span class="hidden-xs">Profile</span></a>
+              <a href="javascript:void();" data-target="#profile" data-toggle="pill" class="nav-link active show"><i class="icon-note"></i> <span class="hidden-xs"><%= t('profile.tabs.profile') %></span></a>
             </li>
             <li class="nav-item">
-              <a href="javascript:void();" data-target="#messages" data-toggle="pill" class="nav-link"><i class="icon-envelope-open"></i> <span class="hidden-xs">Notifications</span></a>
+              <a href="javascript:void();" data-target="#messages" data-toggle="pill" class="nav-link"><i class="icon-envelope-open"></i> <span class="hidden-xs"><%= t('profile.tabs.notifications') %></span></a>
             </li>
           </ul>
           <div class="tab-content p-3">
