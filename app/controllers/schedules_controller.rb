@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
+# Schedules
 class SchedulesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :find_schedule, only: %i[show edit update destroy]
 
   def index; end
 
@@ -23,7 +24,7 @@ class SchedulesController < ApplicationController
     else
       flash[:danger] = t('.flash.danger')
       render :new
-    end      
+    end
   end
 
   def edit; end

@@ -1,0 +1,10 @@
+en:
+  profile:
+    fields:
+      email: "Email"
+      username: "Username"
+    show:
+      title: Profile
+      links:
+        reset_password: Reset password
+        exit: Exit

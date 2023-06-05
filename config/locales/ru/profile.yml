@@ -1,0 +1,10 @@
+ru:
+  profile:
+    fields:
+      email: "Email"
+      username: "Псевдоним"
+    show:
+      title: Профиль
+      links:
+        reset_password: Сброить пароль
+        exit: Выход
