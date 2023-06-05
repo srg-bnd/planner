@@ -1,0 +1,28 @@
+ru:
+  habits:
+    index:
+      title:
+        title: Привычки
+      form:
+        name:
+          placeholder: "Бег по утрам"
+      you_sure: Вы уверены?
+    create:
+      flash:
+        success: Привычка создана
+        danger: Ошибка при создании привычки
+    update:
+      flash:
+        success: Привычка обновлена
+        danger: Ошибка при обновлении привычки
+    destroy:
+      flash:
+        success: Привычка удалена
+        danger: Ошибка при удалении привычки
+    progress:
+      you_sure: Вы уверены?
+      title:
+        title: Прогресс привычек
+      link:
+        habits:
+          show: "Привычки"

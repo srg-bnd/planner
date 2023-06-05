@@ -54,4 +54,14 @@ module ActiveFinder
   def find_field_of_activity_prefix
     find_field_of_activity :find_field_of_activity_id
   end
+
+  # Habit
+  def find_habit(id = :id)
+    @habit = Habit.find(params[id])
+  end
+
+  # Habit Day
+  def find_habit(id = :id)
+    @habit_day = HabitDay.find(params[id])
+  end
 end

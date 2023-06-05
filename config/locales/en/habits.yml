@@ -1,0 +1,28 @@
+en:
+  habits:
+    index:
+      title:
+        title: Habits
+      form:
+        name:
+          placeholder: "Running in the morning"
+        you_sure: Are you sure?
+    create:
+      flash:
+        success: Habit created
+        danger: Error when creation a habit
+    update:
+      flash:
+        success: Habit updated
+        danger: Error when updating a habit
+    destroy:
+      flash:
+        success: Habit deleted
+        danger: Error when deleting a habit
+    progress:
+      you_sure: Are you sure?
+      title:
+        title: Habit Progress
+      link:
+        habits:
+          show: "Habits"

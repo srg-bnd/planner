@@ -1,0 +1,13 @@
+en:
+  profile:
+    tabs:
+      profile: "Profile"
+      notifications: "Notifications"
+    fields:
+      email: "Email"
+      username: "Username"
+    show:
+      title: Profile
+      links:
+        reset_password: Reset password
+        exit: Exit

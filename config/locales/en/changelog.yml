@@ -1,0 +1,17 @@
+en:
+  changelog:
+    title:
+      release: "Release"
+    releases:
+      -
+        id: 3
+        date: 01.06.2023
+        name: Habit management
+      -
+        id: 2
+        date: 01.03.2023
+        name: Schedule management
+      -
+        id: 1
+        date: 01.01.2023
+        name: Profile

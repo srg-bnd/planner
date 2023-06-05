@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   has_many :users_schedules
   has_many :schedules, through: :users_schedules
+  has_many :habits
 end
