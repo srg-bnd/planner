@@ -1,2 +1,63 @@
-<h1>Habits#index</h1>
-<p>Find me in app/views/habits/index.html.erb</p>
+<div class='jumbotron p-3 jumbotron-fluid bg-light'>
+  <!-- Menu -->
+  <h1 class='display-5'>
+    <%= t('habits.index.title.title') %>
+  </h1>
+
+  <hr class="my-4">
+  <div>
+  <%= link_to t('habits.progress.title.title'),
+              progress_habits_path,
+              type: "button",
+              class: "btn btn-outline-success m-1" %>
+  </div>
+  <hr class="my-4">
+  <div class="list-group">
+    <!-- Creation -->
+    <div class='list-group-item bg-light'>
+      <%= form_for [@new_habit] do |f| %>
+      <div class="d-flex w-100 justify-content-between">
+        <div class='w-100 mr-1'>
+          <h5><%= render 'form', f: f %></h5>
+        </div>
+
+        <div>
+          <%= button_tag type: 'submit',
+                        class: "btn btn-outline-success button postfix" do %>
+            <%= render 'icons/plus' %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <!-- List -->
+    <% @habits.each do |habit| %>
+    <div class='list-group-item bg-light'>
+      <%= form_for [habit] do |f| %>
+      <div class="d-flex w-100 justify-content-between">
+
+      <div class='w-100 mr-1'>
+        <h5><%= render 'form', f: f %></h5>
+      </div>
+
+      <div class='mr-1'>
+        <%= button_tag type: 'submit',
+                      class: "btn btn btn-outline-primary button postfix" do %>
+          <%= render 'icons/check' %>
+        <% end %>
+      </div>
+
+      <div>
+        <%= link_to [habit],
+                    method: :delete,
+                    data: {confirm: t('.you_sure')},
+                    class: "btn btn btn-outline-danger" do %>
+          <%= render 'icons/trash_fill' %>
+        <% end %>
+      </div>
+
+      </div></div><% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+en:
+  habit_days:
+    create:
+      flash:
+        success: Habit day created
+        danger: Error when creation a habit day
+    update:
+      flash:
+        success: Habit day updated
+        danger: Error when updating a habit day
+    destroy:
+      flash:
+        success: Habit day deleted
+        danger: Error when deleting a habit day
