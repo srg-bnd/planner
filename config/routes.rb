@@ -20,6 +20,9 @@ Rails.application.routes.draw do
       resources :field_of_activities, only: %i[index create update destroy]
     end
 
+    resources :habits, only: %i[index show new create edit update destroy]
+    resources :habit_days, only: %i[index show new create destroy]
+
     defaults format: :json do
       namespace :api do
         namespace :v1 do
