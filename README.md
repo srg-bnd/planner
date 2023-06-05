@@ -1,3 +1,4 @@
 # Xaoc
 
-Schedule management
+* Schedule management
+* Habit management
