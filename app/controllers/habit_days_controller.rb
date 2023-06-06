@@ -3,7 +3,7 @@
 # HabitDays
 class HabitDaysController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_habit, only: %i[destroy]
+  before_action :find_habit_day, only: %i[destroy]
 
   def create
     @habit_day = HabitDay.new(create_params)

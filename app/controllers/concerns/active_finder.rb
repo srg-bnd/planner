@@ -61,7 +61,7 @@ module ActiveFinder
   end
 
   # Habit Day
-  def find_habit(id = :id)
+  def find_habit_day(id = :id)
     @habit_day = HabitDay.find(params[id])
   end
 end
