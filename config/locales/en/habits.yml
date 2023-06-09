@@ -22,7 +22,7 @@ en:
     progress:
       you_sure: Are you sure?
       title:
-        title: Habit Progress
+        title: Progress
       link:
         habits:
           show: "Habits"

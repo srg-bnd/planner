@@ -13,6 +13,7 @@ module Xaoc
 
     config.i18n.available_locales = %i[ru en]
     config.i18n.default_locale = :ru
+    config.time_zone = 'Moscow'
 
     # NOTE: Deprecated
     config.action_mailer.smtp_settings = {

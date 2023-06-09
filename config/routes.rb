@@ -25,7 +25,7 @@ Rails.application.routes.draw do
         get 'progress'
       end
     end
-    resources :habit_days, only: %i[create destroy]
+    resources :habit_days, only: %i[create update destroy]
 
     defaults format: :json do
       namespace :api do

@@ -1,8 +1,8 @@
 <div class="jumbotron p-3 jumbotron-fluid bg-light">
-  <h1 class="display-5"><%= t('occupations.edit.title')%></h1>
+  <h2 class="display-5"><%= t('occupations.edit.title')%></h2>
   <hr class="my-4">
 
-  <%= link_to t('occupations.show.link.schedules.show'), schedule_path(@schedule), type: "button", class: "btn btn-outline-secondary" %>  
+  <%= link_to t('occupations.show.link.schedules.show'), schedule_path(@schedule), type: "button", class: "btn btn-outline-secondary" %>
   <%= link_to schedule_occupations_path(@schedule), type: "button", class: "btn btn-outline-secondary" do %>
      <%= t('schedules.show.link.occupations.manage') %> <span class="badge badge-light border">
      <%= @schedule.occupations.count %>
