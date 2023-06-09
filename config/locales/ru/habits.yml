@@ -22,7 +22,7 @@ ru:
     progress:
       you_sure: Вы уверены?
       title:
-        title: Прогресс привычек
+        title: Прогресс
       link:
         habits:
           show: "Привычки"

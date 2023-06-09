@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_05_191605) do
+ActiveRecord::Schema.define(version: 2023_06_09_220102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 2023_06_05_191605) do
     t.bigint "habit_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "state"
+    t.boolean "draft"
     t.index ["habit_id"], name: "index_habit_days_on_habit_id"
   end
 

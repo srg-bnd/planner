@@ -1,11 +1,13 @@
 <div class="jumbotron p-3 jumbotron-fluid bg-light">
-  <h1 class="display-5"><%= t('habits.progress.title.title') %></h1>
+  <h2 class="display-5"><%= t('habits.index.title.title') %> | <%= t('habits.progress.title.title') %></h2>
   <hr class="my-4">
   <div>
-  <%= link_to t('habits.progress.link.habits.show'),
-              habits_path(),
+  <%= link_to habits_path(),
               type: 'button',
-              class: 'btn btn-outline-secondary m-1' %>
+              class: 'btn btn-outline-secondary m-1' do %>
+    <%= t('habits.progress.link.habits.show')%>
+    <span class="badge badge-light"><%= @habits.size %></span>
+  <% end %>
   </div>
 
   <hr class="my-4">
@@ -14,9 +16,13 @@
     <table class="table table-bordered table-sm table-condensed">
       <thead>
         <tr>
-          <th class="m-0 p-0"><%= @now.strftime("%Y/%m") %></th>
+          <th class="py-0"><span class="badge badge-pill badge-light"><%= @now.strftime("%Y/%m") %></span></th>
           <% @dates.each do |date| %>
-            <th class="m-0 p-0 text-center"><%= date.strftime("%d") %></th>
+            <% if @now == date %>
+              <th class="p-0 text-center"><span class="badge badge-pill badge-success"><%= date.strftime("%d") %></th>
+            <% else %>
+              <th class="p-0 text-center"><span class="badge badge-pill badge-light"><%= date.strftime("%d") %></th>
+            <% end %>
           <% end %>
         </tr>
       </thead>
@@ -24,13 +30,19 @@
       <tbody>
       <% @habits.each do |habit| %>
         <tr>
-          <th class="m-0 py-0" title="<%= habit.name %>" ><%= truncate(habit.name, length: 10) %></th>
+          <th title="<%= habit.name %>" ><code><%= truncate(habit.name, length: 10) %></code></th>
 
           <% @dates.each do |date| %>
             <% if (habit_day = habit.habit_day_by_date(date)) %>
               <td class="text-center">
-                <%= form_for(habit_day, method: :delete) do |f| %>
-                  <%= f.submit '', class: 'px-3 btn-success' %>
+                <% if habit_day.draft %>
+                  <%= form_for(habit_day, method: :put) do |f| %>
+                    <%= f.submit '', class: 'px-3 btn-primary' %>
+                  <% end %>
+                <% else %>
+                  <%= form_for(habit_day, method: :delete) do |f| %>
+                    <%= f.submit '', class: 'px-3 btn-success' %>
+                  <% end %>
                 <% end %>
               </td>
             <% else %>

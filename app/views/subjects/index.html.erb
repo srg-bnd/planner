@@ -1,8 +1,8 @@
 <div class='jumbotron p-3 jumbotron-fluid bg-light'>
   <!-- Menu -->
-  <h1 class='display-5'>
+  <h2 class='display-5'>
     <%= @schedule.title %> | <%= t('schedules.show.link.subjects.manage') %>
-  </h1>
+  </h2>
 
   <hr class="my-4">
   <div>
@@ -10,11 +10,11 @@
               schedule_path(@schedule),
               type: 'button',
               class: 'btn btn-outline-secondary m-1' %>
-  <%= link_to t('schedules.show.link.occupations.new'), 
+  <%= link_to t('schedules.show.link.occupations.new'),
               new_schedule_occupation_path(@schedule),
               type: "button",
               class: "btn btn-outline-success m-1" %>
-  </div>  
+  </div>
   <hr class="my-4">
   <div class="list-group">
 

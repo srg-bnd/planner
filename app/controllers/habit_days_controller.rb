@@ -3,7 +3,7 @@
 # HabitDays
 class HabitDaysController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_habit_day, only: %i[destroy]
+  before_action :find_habit_day, only: %i[update destroy]
 
   def create
     @habit_day = HabitDay.new(create_params)
@@ -11,6 +11,13 @@ class HabitDaysController < ApplicationController
       flash[:danger] = t('.flash.danger')
       return render :new
     end
+
+    redirect_to progress_habits_path
+  end
+
+  def update
+    @habit_day.draft = false
+    flash[:danger] = t('.flash.danger') unless @habit_day.save
 
     redirect_to progress_habits_path
   end
