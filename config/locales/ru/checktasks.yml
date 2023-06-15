@@ -1,0 +1,19 @@
+ru:
+  checktasks:
+    index:
+      title:
+        title: Чеклист
+      form:
+      you_sure: Вы уверены?
+    create:
+      flash:
+        success: Задача создана
+        danger: Ошибка при создании задачи
+    update:
+      flash:
+        success: Задача обновлена
+        danger: Ошибка при обновлении задачи
+    destroy:
+      flash:
+        success: Задача удалена
+        danger: Ошибка при удалении задачи

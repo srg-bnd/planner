@@ -7,5 +7,6 @@ class ProfileController < ApplicationController
   def show
     @count_of_schedules = current_user.schedules.count
     @count_of_habits = current_user.habits.count
+    @count_of_checktasks = current_user.checktasks.doing.count
   end
 end

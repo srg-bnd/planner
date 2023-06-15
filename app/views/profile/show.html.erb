@@ -37,6 +37,14 @@
                   <% end %>
                 </small>
               </div>
+              <div class="col p-2">
+                <h4 class="mb-1 line-height-5"><%= @count_of_checktasks %></h4>
+                <small class="mb-0 font-weight-bold">
+                  <%= link_to checktasks_path, title: t('checktasks.index.title.title') do %>
+                    <%= t('checktasks.index.title.title') %>
+                  <% end %>
+                </small>
+              </div>
             </div>
           </div>
           <div class="card-footer text-center">

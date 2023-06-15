@@ -7,7 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
 
+  has_many :checktasks
+  has_many :habits
   has_many :users_schedules
   has_many :schedules, through: :users_schedules
-  has_many :habits
 end
