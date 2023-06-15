@@ -1,0 +1,13 @@
+<% if local_assigns[:done] %>
+  <s>
+    <%= f.text_field :title,
+                      class: 'form-control',
+                      required: true
+    %>
+  </s>
+<% else %>
+  <%= f.text_field :title,
+                    class: 'form-control',
+                    required: true
+  %>
+<% end %>

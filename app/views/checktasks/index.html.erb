@@ -1,0 +1,56 @@
+<div class="jumbotron p-3 jumbotron-fluid bg-light">
+  <h2 class="display-5">
+    <%= t('checktasks.index.title.title') %>
+  </h2>
+
+  <div class="list-group">
+
+  <!-- Creation -->
+  <div class='list-group-item bg-light'>
+    <%= form_for [@new_checktask] do |f| %>
+      <div class="d-flex w-100 justify-content-between">
+        <div class='w-100 mr-1'>
+          <h5><%= render 'form', f: f %></h5>
+        </div>
+
+        <div>
+          <%= button_tag type: 'submit',
+                        class: "btn btn-outline-success button postfix" do %>
+            <%= render 'icons/plus' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- List -->
+  <% @checktasks.each do |checktask| %>
+  <div class='list-group-item bg-light'>
+    <%= form_for [checktask] do |f| %>
+    <div class="d-flex w-100 justify-content-between">
+
+    <div class='w-100 mr-1'>
+      <%= render 'form', f: f, done: checktask.done %>
+    </div>
+
+    <div class='mr-1'>
+      <%= button_tag type: 'submit',
+                     class: "btn btn btn-outline-primary button postfix" do %>
+        <%= render 'icons/check' %>
+      <% end %>
+    </div>
+
+    <div>
+      <%= link_to [checktask],
+                  method: :delete,
+                  data: {confirm: t('.you_sure')},
+                  class: "btn btn btn-outline-danger" do %>
+        <%= render 'icons/trash_fill' %>
+      <% end %>
+    </div>
+
+    </div></div><% end %>
+  <% end %>
+  </div>
+
+</div>

@@ -67,6 +67,6 @@ module ActiveFinder
 
   # Checktask
   def find_checktask(id = :id)
-    @habit = Checktask.find(params[id])
+    @checktask = Checktask.find(params[id])
   end
 end
