@@ -27,6 +27,12 @@ Rails.application.routes.draw do
     end
     resources :habit_days, only: %i[create update destroy]
 
+    resources :checktasks, only: %i[index create update destroy] do
+      member do
+        get 'done'
+      end
+    end
+
     defaults format: :json do
       namespace :api do
         namespace :v1 do

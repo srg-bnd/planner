@@ -64,4 +64,9 @@ module ActiveFinder
   def find_habit_day(id = :id)
     @habit_day = HabitDay.find(params[id])
   end
+
+  # Checktask
+  def find_checktask(id = :id)
+    @checktask = Checktask.find(params[id])
+  end
 end
