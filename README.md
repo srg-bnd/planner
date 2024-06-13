@@ -16,6 +16,6 @@ rails db:migrate
 rails server
 ```
 
-# License
+## License
 
 Xaoc is released under the [MIT License](LICENSE.txt).
