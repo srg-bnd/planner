@@ -3,7 +3,7 @@
 class FieldOfActivitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_schedule_with_prefix
-  before_action :find_field_of_activity, only: [:update, :destroy]
+  before_action :find_field_of_activity, only: %i[update destroy]
 
   def index
     @field_of_activities = @schedule.field_of_activities
@@ -12,32 +12,32 @@ class FieldOfActivitiesController < ApplicationController
 
   def create
     @field_of_activity = @schedule.field_of_activities.new(create_params)
-    unless @field_of_activity.save
-      flash[:danger] = t('.flash.danger')
-      return render :new
-    end
 
-    redirect_to schedule_field_of_activities_path(@schedule),
-                success: t('.flash.success')
+    if @field_of_activity.save
+      redirect_to schedule_field_of_activities_path(@schedule), success: t('.flash.success')
+    else
+      flash[:danger] = t('.flash.danger')
+      render :new
+    end
   end
 
   def update
     @field_of_activity.assign_attributes(update_params)
-    unless @field_of_activity.save
-      flash[:danger] = t('.flash.danger')
-      return render :edit
-    end
 
-    redirect_to schedule_field_of_activities_path(@schedule),
-                primary: t('.flash.success')
+    if @field_of_activity.save
+      redirect_to schedule_field_of_activities_path(@schedule), primary: t('.flash.success')
+    else
+      flash[:danger] = t('.flash.danger')
+      render :edit
+    end
   end
 
   def destroy
-    unless @field_of_activity.destroy
+    if @field_of_activity.destroy
+      redirect_to schedule_field_of_activities_path(@schedule)
+    else
       flash[:danger] = t('.flash.danger')
     end
-
-    redirect_to schedule_field_of_activities_path(@schedule)
   end
 
   private

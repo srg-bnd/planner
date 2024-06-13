@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Schedules
 class SchedulesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_schedule, only: %i[show edit update destroy]
@@ -31,13 +30,13 @@ class SchedulesController < ApplicationController
 
   def update
     @schedule.assign_attributes(update_params)
-    unless @schedule.save
-      flash[:danger] = t('.flash.danger')
-      return render :edit
-    end
 
-    redirect_to edit_schedule_path(@schedule),
-                primary: t('.flash.success')
+    if @schedule.save
+      redirect_to edit_schedule_path(@schedule), primary: t('.flash.success')
+    else
+      flash[:danger] = t('.flash.danger')
+      render :edit
+    end
   end
 
   def destroy

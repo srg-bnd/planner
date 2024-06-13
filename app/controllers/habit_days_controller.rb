@@ -1,31 +1,36 @@
 # frozen_string_literal: true
 
-# HabitDays
 class HabitDaysController < ApplicationController
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
   before_action :find_habit_day, only: %i[update destroy]
 
   def create
     @habit_day = HabitDay.new(create_params)
-    unless @habit_day.save
+    
+    if @habit_day.save
+      redirect_to progress_habits_path
+    else
       flash[:danger] = t('.flash.danger')
-      return render :new
+      render :new
     end
-
-    redirect_to progress_habits_path
   end
 
   def update
     @habit_day.draft = false
-    flash[:danger] = t('.flash.danger') unless @habit_day.save
 
-    redirect_to progress_habits_path
+    if @habit_day.save
+      redirect_to progress_habits_path
+    else
+      flash[:danger] = t('.flash.danger') unless @habit_day.save
+    end
   end
 
   def destroy
-    flash[:danger] = t('.flash.danger') unless @habit_day.destroy
-
-    redirect_to progress_habits_path
+    if @habit_day.destroy
+      redirect_to progress_habits_path
+    else
+      flash[:danger] = t('.flash.danger')
+    end
   end
 
   private

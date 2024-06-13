@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: %i[create update destroy]
   before_action :find_schedule_with_prefix
   before_action :find_occupation_with_prefix
-  before_action :find_task, only: [:update, :destroy]
+  before_action :find_task, only: %i[update destroy]
 
   def index
-    @tasks = @occupation.tasks
-                        .order(complete: :asc, created_at: :desc)
-    #                   .where(occupation_date: @occupation.current_week_day)
+    @tasks = @occupation.tasks.order(complete: :asc, created_at: :desc)
     @task = Task.new
   end
 
@@ -17,37 +15,31 @@ class TasksController < ApplicationController
     @task = @occupation.tasks.new(create_params)
     @task.occupation_date = @occupation.current_week_day
 
-    unless @task.save
+    if @task.save
+      redirect_to schedule_occupation_tasks_path(@schedule, @occupation), success: t('.flash.success')
+    else
       flash[:danger] = t('.flash.danger')
-      return render :new
+      render :new
     end
-
-    redirect_to schedule_occupation_tasks_path(
-      @schedule, @occupation
-    ), success: t('.flash.success')
   end
 
   def update
     @task.assign_attributes(update_params)
 
-    unless @task.save
+    if @task.save
+      redirect_to schedule_occupation_tasks_path(@schedule, @occupation), success: t('.flash.success')
+    else
       flash[:danger] = t('.flash.danger')
-      return render :new
-
-      redirect_to schedule_occupation_tasks_path(
-        @schedule, @occupation
-      ), success: t('.flash.success')
+      render :new
     end
   end
 
   def destroy
-    unless @task.destroy
+    if @task.destroy
+      redirect_to schedule_occupation_tasks_path(@schedule, @occupation)
+    else
       flash[:danger] = t('.flash.danger')
     end
-
-    redirect_to schedule_occupation_tasks_path(
-      @schedule, @occupation
-    )
   end
 
   protected

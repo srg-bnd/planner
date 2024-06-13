@@ -3,7 +3,7 @@
 class PlacesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_schedule_with_prefix
-  before_action :find_place, only: [:update, :destroy]
+  before_action :find_place, only: %i[update destroy]
 
   def index
     @places = @schedule.places
@@ -12,31 +12,32 @@ class PlacesController < ApplicationController
 
   def create
     @place = @schedule.places.new(create_params)
-    unless @place.save
-      flash[:danger] = t('.flash.danger')
-      return render :new
-    end
 
-    redirect_to schedule_places_path(@schedule), success: t('.flash.success')
+    if @place.save
+      redirect_to schedule_places_path(@schedule), success: t('.flash.success')
+    else
+      flash[:danger] = t('.flash.danger')
+      render :new
+    end
   end
 
   def update
     @place.assign_attributes(update_params)
-    unless @place.save
-      flash[:danger] = t('.flash.danger')
-      return render :edit
-    end
 
-    redirect_to schedule_places_path(@schedule),
-                primary: t('.flash.success')
+    if @place.save
+      redirect_to schedule_places_path(@schedule), primary: t('.flash.success')
+    else
+      flash[:danger] = t('.flash.danger')
+      render :edit
+    end
   end
 
   def destroy
-    unless @place.destroy
+    if @place.destroy
+      redirect_to schedule_places_path(@schedule)
+    else
       flash[:danger] = t('.flash.danger')
     end
-
-    redirect_to schedule_places_path(@schedule)
   end
 
   private

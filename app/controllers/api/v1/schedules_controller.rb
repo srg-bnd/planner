@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
-# Schedules Controller
-class Api::V1::SchedulesController < Api::V1::BaseController
-  def index
-    @schedules = current_user.schedules.order(created_at: :asc)
-  end
-
-  private
-
-  def find_schedule
-    @schedule = Schedule.find(params[:id])
+module API
+  module V1
+    class SchedulesController < BaseController
+      def index
+        @schedules = Schedules::CollectionService.new.call(current_user)
+      end
+    end
   end
 end
