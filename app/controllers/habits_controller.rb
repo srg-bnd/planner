@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Habits
 class HabitsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_habit, only: %i[update destroy]
@@ -12,28 +11,32 @@ class HabitsController < ApplicationController
 
   def create
     @habit = current_user.habits.new(create_params)
-    unless @habit.save
-      flash[:danger] = t('.flash.danger')
-      return render :new
-    end
 
-    redirect_to habits_path, success: t('.flash.success')
+    if @habit.save
+      redirect_to habits_path, success: t('.flash.success')
+    else
+      flash[:danger] = t('.flash.danger')
+      render :new
+    end
   end
 
   def update
     @habit.assign_attributes(update_params)
-    unless @habit.save
-      flash[:danger] = t('.flash.danger')
-      return render :edit
-    end
 
-    redirect_to habits_path, primary: t('.flash.success')
+    if @habit.save
+      redirect_to habits_path, primary: t('.flash.success')
+    else
+      flash[:danger] = t('.flash.danger')
+      render :edit
+    end
   end
 
   def destroy
-    flash[:danger] = t('.flash.danger') unless @habit.destroy
-
-    redirect_to habits_path
+    if @habit.destroy
+      redirect_to habits_path
+    else
+      flash[:danger] = t('.flash.danger')
+    end
   end
 
   def progress

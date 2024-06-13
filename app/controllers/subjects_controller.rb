@@ -3,7 +3,7 @@
 class SubjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_schedule_with_prefix
-  before_action :find_subject, only: [:update, :destroy]
+  before_action :find_subject, only: %i[update destroy]
 
   def index
     @subjects = @schedule.subjects
@@ -12,31 +12,32 @@ class SubjectsController < ApplicationController
 
   def create
     @subject = @schedule.subjects.new(create_params)
-    unless @subject.save
-      flash[:danger] = t('.flash.danger')
-      return render :new
-    end
 
-    redirect_to schedule_subjects_path(@schedule), success: t('.flash.success')
+    if @subject.save
+      redirect_to schedule_subjects_path(@schedule), success: t('.flash.success')
+    else
+      flash[:danger] = t('.flash.danger')
+      render :new
+    end
   end
 
   def update
     @subject.assign_attributes(update_params)
-    unless @subject.save
-      flash[:danger] = t('.flash.danger')
-      return render :edit
-    end
 
-    redirect_to schedule_subjects_path(@schedule),
-                primary: t('.flash.success')
+    if @subject.save
+      redirect_to schedule_subjects_path(@schedule), primary: t('.flash.success')
+    else
+      flash[:danger] = t('.flash.danger')
+      render :edit
+    end
   end
 
   def destroy
-    unless @subject.destroy
+    if @subject.destroy
+      redirect_to schedule_subjects_path(@schedule)
+    else
       flash[:danger] = t('.flash.danger')
     end
-
-    redirect_to schedule_subjects_path(@schedule)
   end
 
   private

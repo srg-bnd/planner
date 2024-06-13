@@ -1,46 +1,49 @@
 require 'rails_helper'
 
-RSpec.describe "Habits", type: :request do
-  describe "GET /index" do
-    it "returns http success" do
-      get "/habits/index"
+RSpec.describe "Habit", type: :request do
+  let!(:user) { create(:user, confirmed_at: Time.now) }
+
+  before do
+    sign_in user
+  end
+
+  describe "GET /habits/" do
+    it "returns http found" do
+      get "/habits"
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /show" do
-    it "returns http success" do
-      get "/habits/show"
+  describe "POST /habits/progress/" do
+    it "returns http found" do
+      get "/habits/progress"
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /create" do
-    it "returns http success" do
-      get "/habits/create"
-      expect(response).to have_http_status(:success)
+  describe "POST /habits/" do
+    it "returns http found" do
+      post "/habits", { params: { habit: { name: 'habit' } } }
+      expect(response).to have_http_status(:found)
     end
   end
 
-  describe "GET /new" do
-    it "returns http success" do
-      get "/habits/new"
-      expect(response).to have_http_status(:success)
+  describe "PUT /habits/:id/" do
+    let!(:habit) { create(:habit, user: user) }
+
+    it "returns http found" do
+      put "/habits/#{habit.id}", { params: { habit: { name: 'habit' } } }
+      expect(response).to have_http_status(:found)
     end
   end
 
-  describe "GET /update" do
-    it "returns http success" do
-      get "/habits/update"
-      expect(response).to have_http_status(:success)
+
+  describe "DELETE /habits/:id/" do
+    let!(:habit) { create(:habit, user: user) }
+
+    it "returns http found" do
+      delete "/habits/#{habit.id}"
+      expect(response).to have_http_status(:found)
     end
   end
-
-  describe "GET /destroy" do
-    it "returns http success" do
-      get "/habits/destroy"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
 end

@@ -28,31 +28,21 @@ class Occupation < ApplicationRecord
 
   def self.custom_type_of_week
     [
-      OpenStruct.new(id: :simple, title:
-        I18n.t('.occupation.type_of_week.simple')),
-      OpenStruct.new(id: :odd, title:
-      I18n.t('.occupation.type_of_week.odd')),
-      OpenStruct.new(id: :even, title:
-      I18n.t('.occupation.type_of_week.even'))
+      OpenStruct.new(id: :simple, title: I18n.t('.occupation.type_of_week.simple')),
+      OpenStruct.new(id: :odd, title: I18n.t('.occupation.type_of_week.odd')),
+      OpenStruct.new(id: :even, title: I18n.t('.occupation.type_of_week.even'))
     ]
   end
 
   def self.custom_week_days
     [
-      OpenStruct.new(id: :monday, title:
-        I18n.t('.occupation.week_days.mon')),
-      OpenStruct.new(id: :tuesday, title:
-      I18n.t('.occupation.week_days.tue')),
-      OpenStruct.new(id: :wednesday, title:
-      I18n.t('.occupation.week_days.wed')),
-      OpenStruct.new(id: :thursday, title:
-        I18n.t('.occupation.week_days.thu')),
-      OpenStruct.new(id: :friday, title:
-      I18n.t('.occupation.week_days.fri')),
-      OpenStruct.new(id: :saturday, title:
-      I18n.t('.occupation.week_days.sat')),
-      OpenStruct.new(id: :sunday, title:
-      I18n.t('.occupation.week_days.sun'))
+      OpenStruct.new(id: :monday, title: I18n.t('.occupation.week_days.mon')),
+      OpenStruct.new(id: :tuesday, title: I18n.t('.occupation.week_days.tue')),
+      OpenStruct.new(id: :wednesday, title: I18n.t('.occupation.week_days.wed')),
+      OpenStruct.new(id: :thursday, title: I18n.t('.occupation.week_days.thu')),
+      OpenStruct.new(id: :friday, title: I18n.t('.occupation.week_days.fri')),
+      OpenStruct.new(id: :saturday, title: I18n.t('.occupation.week_days.sat')),
+      OpenStruct.new(id: :sunday, title: I18n.t('.occupation.week_days.sun'))
     ]
   end
 

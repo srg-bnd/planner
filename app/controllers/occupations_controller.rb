@@ -3,7 +3,7 @@
 class OccupationsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_schedule_with_prefix
-  before_action :find_occupation, only: [:edit, :update, :destroy]
+  before_action :find_occupation, only: %i[edit update destroy]
 
   def index
     @occupations = @schedule.occupations.order(week: :asc, start_time: :asc)
@@ -15,12 +15,13 @@ class OccupationsController < ApplicationController
 
   def create
     @occupation = @schedule.occupations.new(create_params)
-    unless @occupation.save
-      flash[:danger] = t('.flash.danger')
-      return render :new
-    end
 
-    redirect_to @schedule, success: t('.flash.success')
+    if @occupation.save
+      redirect_to @schedule, success: t('.flash.success')
+    else
+      flash[:danger] = t('.flash.danger')
+      render :new
+    end
   end
 
   def edit
@@ -59,21 +60,21 @@ class OccupationsController < ApplicationController
 
   def update
     @occupation.assign_attributes(update_params)
-    unless @occupation.save
-      flash[:danger] = t('.flash.danger')
-      return render :edit
-    end
 
-    redirect_to schedule_occupations_path(@schedule),
-                primary: t('.flash.success')
+    if @occupation.save
+      redirect_to schedule_occupations_path(@schedule), primary: t('.flash.success')
+    else
+      flash[:danger] = t('.flash.danger')
+      render :edit
+    end
   end
 
   def destroy
-    unless @occupation.destroy
+    if @occupation.destroy
+      redirect_to schedule_occupations_path(@schedule)
+    else
       flash[:danger] = t('.flash.danger')
     end
-
-    redirect_to schedule_occupations_path(@schedule)
   end
 
   private

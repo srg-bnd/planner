@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2023_06_15_213319) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,7 +44,7 @@ ActiveRecord::Schema.define(version: 2023_06_15_213319) do
     t.string "title"
     t.date "date"
     t.boolean "done"
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_checktasks_on_user_id"
@@ -63,17 +60,16 @@ ActiveRecord::Schema.define(version: 2023_06_15_213319) do
 
   create_table "habit_days", force: :cascade do |t|
     t.date "date"
-    t.bigint "habit_id", null: false
+    t.integer "habit_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "state"
     t.boolean "draft"
     t.index ["habit_id"], name: "index_habit_days_on_habit_id"
   end
 
   create_table "habits", force: :cascade do |t|
     t.string "name"
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_habits_on_user_id"
@@ -81,7 +77,7 @@ ActiveRecord::Schema.define(version: 2023_06_15_213319) do
 
   create_table "occupations", force: :cascade do |t|
     t.string "title"
-    t.bigint "schedule_id", null: false
+    t.integer "schedule_id", null: false
     t.date "start_date"
     t.time "start_time"
     t.date "end_date"
@@ -155,8 +151,8 @@ ActiveRecord::Schema.define(version: 2023_06_15_213319) do
   end
 
   create_table "users_schedules", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "schedule_id"
+    t.integer "user_id"
+    t.integer "schedule_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["schedule_id"], name: "index_users_schedules_on_schedule_id"

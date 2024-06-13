@@ -27,6 +27,7 @@ class Schedule < ApplicationRecord
     if start_date.present? && current_date >= start_date
       number = ((current_date - start_date).to_i / 7) + 1
     end
+
     number.odd? ? :odd : :even
   end
 
