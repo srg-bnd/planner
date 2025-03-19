@@ -1,6 +1,6 @@
 # Planner
 
-Planning system
+Planner and conquer!
 
 ## Features
 
