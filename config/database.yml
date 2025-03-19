@@ -4,11 +4,11 @@ default: &default
 
 development:
   <<: *default
-  database: "db/xaoc_development.db"
+  database: "db/planner_development.db"
 
 test:
   <<: *default
-  database: "db/xaoc_test.db"
+  database: "db/planner_test.db"
 
 production:
   adapter: postgresql
@@ -18,5 +18,5 @@ production:
   host: <%= ENV.fetch('RAILS_DB_HOST') { 'localhost' } %>
   port: <%= ENV.fetch('RAILS_DB_PORT') { 5432 } %>
   pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
-  database: <%= ENV.fetch('RAILS_DB_PRODUCTION') { 'xaoc_production' } %>
+  database: <%= ENV.fetch('RAILS_DB_PRODUCTION') { 'planner_production' } %>
   timeout: 5000

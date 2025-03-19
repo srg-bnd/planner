@@ -20,4 +20,4 @@ rails server
 
 ## License
 
-Xaoc is released under the [MIT License](LICENSE.txt).
+Planner is released under the [MIT License](LICENSE.txt).
