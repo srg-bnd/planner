@@ -11,7 +11,7 @@ Planner and conquer!
 ## Getting Started
 
 ```bash
-git git@github.com:sb-truefalse/xaoc.git
+git clone git@github.com:srg-bnd/planner.git & cd planner
 yarn install
 bundle install
 rails db:migrate
