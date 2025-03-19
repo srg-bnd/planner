@@ -2,6 +2,8 @@
 
 Planner and conquer!
 
+![Demo](docs/demo.png)
+
 ## Features
 
 * Checklist
