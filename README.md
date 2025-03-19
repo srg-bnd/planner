@@ -1,4 +1,6 @@
-# Planning system "Xaoc"
+# Planner
+
+Planning system
 
 ## Features
 
