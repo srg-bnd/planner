@@ -4,7 +4,7 @@ module API
   module V1
     class SchedulesController < BaseController
       def index
-        @schedules = Schedules::CollectionService.new.call(current_user)
+        @schedules = SchedulesQuery.new.call(current_user)
       end
     end
   end

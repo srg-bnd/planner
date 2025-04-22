@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  LOCALES = %w[en ru].freeze
+
   def pagination(objects)
     return objects unless params[:page].present?
 
@@ -11,7 +13,7 @@ module ApplicationHelper
 
   def switch_locale(&action)
     locale = params[:locale]
-    locale = I18n.default_locale if %w[en ru].exclude?(locale)
+    locale = I18n.default_locale if LOCALES.exclude?(locale)
 
     I18n.with_locale(locale, &action)
   end
