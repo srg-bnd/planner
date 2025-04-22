@@ -1,6 +1,6 @@
 # Planner
 
-Planner and conquer!
+Plan without panic!
 
 ![Demo](docs/demo.png)
 
