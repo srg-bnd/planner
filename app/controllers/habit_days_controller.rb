@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class HabitDaysController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :find_habit_day, only: %i[update destroy]
 
   def create
     @habit_day = HabitDay.new(create_params)
-    
+
     if @habit_day.save
       redirect_to progress_habits_path
     else
